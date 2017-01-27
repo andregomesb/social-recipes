@@ -17,8 +17,10 @@ feature 'User views recipes' do
 
   scenario 'and view a list of recipes' do
     cuisine = create(:cuisine)
-    recipe = create(:recipe, cuisine: cuisine)
-    another_recipe = create(:recipe, name: "Another Recipe", cuisine: cuisine)
+    meal = create(:meal)
+    recipe = create(:recipe, cuisine: cuisine, meal:meal)
+    another_recipe = create(:recipe, name: "Another Recipe", cuisine: cuisine,
+                           meal: meal)
 
     visit root_path
 
