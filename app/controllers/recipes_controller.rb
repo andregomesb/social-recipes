@@ -2,8 +2,11 @@ class RecipesController < ApplicationController
 
   before_action :set_recipe, only:[:show]
   before_action :set_collection, only:[:new]
+
+  LATEST_RECIPES_HOME = 20
+
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.last(LATEST_RECIPES_HOME)
   end
 
   def new

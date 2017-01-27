@@ -1,4 +1,9 @@
 FactoryGirl.define do
+
+  sequence :name_numbered do |n|
+    "Fried Masala Chicken #{n}"
+  end
+
   factory :recipe do
     name 'Fried Masala Chicken'
     cuisine
@@ -14,5 +19,9 @@ FactoryGirl.define do
     molliipsa quae ab tit anim id est laborious. Sed ut perspiciatis unde omnis
     iste natus error sit voluptatem, totam rem aperiam, eaque ipsa quae ab tis
     et quasi architecto beatae vitae dicta sunt explicabo.'
+
+    factory :numbered_recipes do
+      name {generate(:name_numbered)}
+    end
   end
 end
