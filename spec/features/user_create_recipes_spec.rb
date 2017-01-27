@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'User creates recipes' do
 
   scenario 'successfully' do
-    recipe = create(:recipe)
+    recipe = build(:recipe)
 
     visit root_path
 
@@ -26,24 +26,10 @@ feature 'User creates recipes' do
 
 
   scenario 'and validates fields' do
-    recipe = create(:recipe)
 
-    visit recipes_path(recipe)
+    visit root_path
 
     click_on 'Cadastrar Receita'
-
-    fill_in 'Nome',             with: ''
-    select recipe.cuisine.name ,      from: 'Cozinha'
-    select recipe.meal.name,         from: 'Tipo de Comida'
-    fill_in 'Porção',           with: recipe.portion
-    fill_in 'Tempo de Preparo', with: recipe.preparation_time
-    select I18n.t(recipe.difficulty,
-                scope:[ :activerecord,
-                        :attributes,
-                        :recipe,
-                        :difficulties]), from: 'Dificuldade'
-    fill_in 'Ingredientes',     with: recipe.ingredients
-    fill_in 'Instruções',       with: recipe.instructions
 
     click_on 'Criar Receita'
 

@@ -8,14 +8,23 @@ pt-BR:
     select_difficulty: "Seleciona a dificuldade"
   recipes:
     create:
-      success: 'Receita cadastrada com sucesso'
+      success: "Receita cadastrada com sucesso"
       error: "Não foi possível cadastrar a receita"
+  cuisines:
+    create:
+      success: "Cozinha cadastrada com sucesso"
+      error: "Não foi possível cadastrar a cozinha"
   activerecord:
     models:
       recipe:
         one: 'Receita'
         other: 'Receitas'
+      cuisine:
+        one: 'Cozinha'
+        other: 'Cozinhas'
     attributes:
+      cuisine:
+        name: "Cozinha"
       recipe:
         name: 'Nome'
         cuisine_id: 'Cozinha'
