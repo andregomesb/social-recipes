@@ -1,31 +1,31 @@
 <h1><%= @recipe.name %></h1>
 <dl class="dl-horizontal">
   <p>
-    <dt><%=t(".cuisine_id")%></dt>
+    <dt><%=t(:cuisine_id, scope: [:activerecord, :attributes, :recipe])%></dt>
     <dd><%= @recipe.cuisine.name %></dd>
   </p>
   <p>
-    <dt><%=t(".meal_id")%></dt>
+    <dt><%=t(:meal_id, scope: [:activerecord, :attributes, :recipe])%></dt>
     <dd><%= @recipe.meal.name %></dd>
   </p>
   <p>
-    <dt><%=t(".portion")%></dt>
+    <dt><%=t(:portion, scope: [:activerecord, :attributes, :recipe])%></dt>
     <dd><%= @recipe.portion %></dd>
   </p>
   <p>
-    <dt><%=t(".preparation_time")%></dt>
+    <dt><%=t(:preparation_time, scope: [:activerecord, :attributes, :recipe])%></dt>
     <dd><%= @recipe.preparation_time %></dd>
   </p>
   <p>
-    <dt><%=t(".difficultyi")%></dt>
-    <dd><%= @recipe.difficulty %></dd>
+    <dt><%=t(:difficulty, scope: [:activerecord, :attributes, :recipe])%></dt>
+    <dd><%= t(@recipe.difficulty, scope: [:activerecord, :attributes, :recipe, :difficulties]) %></dd>
   </p>
   <p>
-    <dt><%=t(".ingredients")%></dt>
+    <dt><%=t(:ingredients, scope: [:activerecord, :attributes, :recipe])%></dt>
     <dd><%= @recipe.ingredients %></dd>
   </p>
   <p>
-    <dt><%=t(".instructions")%></dt>
+    <dt><%=t(:instructions, scope: [:activerecord, :attributes, :recipe])%></dt>
     <dd><%= @recipe.instructions %></dd>
   </p>
 </dl>

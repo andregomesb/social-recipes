@@ -1,10 +1,13 @@
 class RecipesController < ApplicationController
+
+  before_action :set_recipe, only:[:show]
+  before_action :set_collection, only:[:new]
   def index
+    @recipes = Recipe.all
   end
 
   def new
     @recipe = Recipe.new
-    set_collection
   end
 
   def create
@@ -19,7 +22,6 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
   end
 
   private
@@ -31,6 +33,7 @@ class RecipesController < ApplicationController
   end
 
   def set_recipe
+    @recipe = Recipe.find(params[:id])
   end
 
   def set_collection

@@ -1,0 +1,4 @@
+  <h2> <%= link_to recipe.name, recipe %> </h2>
+  <p> <%= recipe.meal.name%></p>
+  <p> <%= recipe.cuisine.name %></p>
+  <p> <%= t(recipe.difficulty , scope:[:activerecord, :attributes, :recipe, :difficulties]) %></p>
