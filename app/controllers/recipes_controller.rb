@@ -7,6 +7,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.last(LATEST_RECIPES_HOME)
+    @cuisines = Cuisine.all
   end
 
   def new

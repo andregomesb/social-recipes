@@ -1,1 +1,3 @@
-<%= @cuisine.name %>
+<h1><%= @cuisine.name %></h1>
+
+<%= render(@cuisine.recipes) || t(".empty") %>

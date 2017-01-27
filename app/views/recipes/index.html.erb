@@ -1,2 +1,15 @@
-<%= link_to 'Cadastrar Receita', new_recipe_path %>
-<%= render @recipes %>
+<div class="row">
+  <%= link_to 'Cadastrar Receita', new_recipe_path %>
+  <div class="col-md-4 col-sm-12">
+    <aside>
+      <div class="cuisine-aside">
+        <% @cuisines.each do |cuisine| %>
+          <%= link_to cuisine.name, cuisine %>
+        <% end %>
+      </div>
+    </aside>
+  </div> <div class="col-md-8 col-sm-12">
+    <%= render @recipes %>
+  </div>
+
+</div>
