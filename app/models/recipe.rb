@@ -10,4 +10,8 @@ class Recipe < ApplicationRecord
       [I18n.t(k,scope:[:activerecord, :attributes, :recipe, :difficulties]).humanize, k]
     end
   end
+
+  def self.search(recipe)
+    where("name like ?", "%#{recipe}%")
+  end
 end

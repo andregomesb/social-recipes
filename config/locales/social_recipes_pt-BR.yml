@@ -1,25 +1,30 @@
 pt-BR:
-  app_title: "Social Recipes"
+  app_title: 'Social Recipes'
   select_prompt:
-    select_cuisine: "Selecione uma cozinha"
-    select_cuisines_example: "Ex: Portuguesa, Italiana, Árabe..."
-    select_meal: "Selecione um tipo de comida"
-    select_meals_example: "Ex: Café da manhã, Acompanhamento, Prato Principal..."
-    select_difficulty: "Seleciona a dificuldade"
+    select_cuisine: 'Selecione uma cozinha'
+    select_cuisines_example: 'Ex: Portuguesa, Italiana, Árabe...'
+    select_meal: 'Selecione um tipo de comida'
+    select_meals_example: 'Ex: Café da manhã, Acompanhamento, Prato Principal...'
+    select_difficulty: 'Seleciona a dificuldade'
+  search: 'Procurar'
+  results:
+    zero: 'Nenhum resultado encontrado'
+    one: '%{count} resultado encontrado'
+    other: '%{count} resultados encontrados'
   recipes:
     create:
-      success: "Receita cadastrada com sucesso"
-      error: "Não foi possível cadastrar a receita"
+      success: 'Receita cadastrada com sucesso'
+      error: 'Não foi possível cadastrar a receita'
   cuisines:
     create:
-      success: "Cozinha cadastrada com sucesso"
-      error: "Não foi possível cadastrar a cozinha"
+      success: 'Cozinha cadastrada com sucesso'
+      error: 'Não foi possível cadastrar a cozinha'
     show:
-      empty: "Nenhuma receita cadastrada"
+      empty: 'Nenhuma receita cadastrada'
   meals:
     create:
-      success: "Tipo de Comida cadastrada com sucesso"
-      error: "Não foi possível cadastrar o tipo de comida"
+      success: 'Tipo de Comida cadastrada com sucesso'
+      error: 'Não foi possível cadastrar o tipo de comida'
   activerecord:
     models:
       recipe:
@@ -33,9 +38,9 @@ pt-BR:
         other: 'Tipos de Comida'
     attributes:
       meal:
-        name: "Tipo de Comida"
+        name: 'Tipo de Comida'
       cuisine:
-        name: "Cozinha"
+        name: 'Cozinha'
       recipe:
         name: 'Nome'
         cuisine_id: 'Cozinha'

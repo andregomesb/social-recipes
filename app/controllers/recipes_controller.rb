@@ -1,13 +1,13 @@
 class RecipesController < ApplicationController
 
   before_action :set_recipe, only:[:show]
+  before_action :set_cuisine, only: [:index, :search]
   before_action :set_collection, only:[:new]
 
   LATEST_RECIPES_HOME = 20
 
   def index
     @recipes = Recipe.last(LATEST_RECIPES_HOME)
-    @cuisines = Cuisine.all
   end
 
   def new
@@ -28,6 +28,13 @@ class RecipesController < ApplicationController
   def show
   end
 
+  def search
+    search_recipe = params[:search]
+    @recipes = Recipe.search(search_recipe)
+    flash[:notice] = I18n.t(:results, count: @recipes.size)
+    render :index
+  end
+
   private
 
   def recipe_params
@@ -38,6 +45,10 @@ class RecipesController < ApplicationController
 
   def set_recipe
     @recipe = Recipe.find(params[:id])
+  end
+
+  def set_cuisine
+    @cuisines = Cuisine.all
   end
 
   def set_collection
