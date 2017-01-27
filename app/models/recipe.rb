@@ -2,8 +2,10 @@ class Recipe < ApplicationRecord
   belongs_to :cuisine
   belongs_to :meal
   enum difficulty: [:easy, :medium, :hard]
-
   validates :name, :ingredients, :instructions, presence: true
+
+  has_attached_file :recipe_image, styles: {large: "600x600", medium: "300x300>", thumb: "100x100>" }, default_url: "/images/missing.jpg"
+  validates_attachment_content_type :recipe_image, content_type: /\Aimage\/.*\z/
 
   def self.difficulty_select
     Recipe.difficulties.keys.map do |k|

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'User creates recipes' do
-
   scenario 'successfully' do
     recipe = build(:recipe)
 
@@ -22,15 +21,14 @@ feature 'User creates recipes' do
 
     expect(page).to have_content "Receita cadastrada com sucesso"
     expect(page).to have_content recipe.name
+    expect(page).to have_xpath("//img[contains(@src, 'missing.jpg')]")
   end
 
 
   scenario 'and validates fields' do
-
     visit root_path
 
     click_on 'Cadastrar Receita'
-
     click_on 'Criar Receita'
 
     expect(page).to have_content "Não foi possível cadastrar a receita"

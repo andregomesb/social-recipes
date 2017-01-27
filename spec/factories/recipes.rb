@@ -23,5 +23,10 @@ FactoryGirl.define do
     factory :numbered_recipes do
       name {generate(:name_numbered)}
     end
+
+    factory :recipe_with_image do
+      recipe_image { File.open(Rails.root.join('spec', 'support', 'photos', 'test.png')) }
+      #{ Rack::Test::UploadedFile.new(Rails.root.join('spec', 'support', 'photos', 'test.png'), 'image/png') }
+    end
   end
 end

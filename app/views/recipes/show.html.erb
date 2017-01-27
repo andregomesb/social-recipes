@@ -1,6 +1,9 @@
 <h1><%= @recipe.name %></h1>
 <dl class="dl-horizontal">
   <p>
+    <%= image_tag @recipe.recipe_image.url(:medium) %>
+  </p>
+  <p>
     <dt><%=t(:cuisine_id, scope: [:activerecord, :attributes, :recipe])%></dt>
     <dd><%= @recipe.cuisine.name %></dd>
   </p>
