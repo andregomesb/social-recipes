@@ -1,0 +1,31 @@
+pt-BR:
+  app_title: "Social Recipes"
+  select_prompt:
+    select_cuisine: "Selecione uma cozinha"
+    select_cuisines_example: "Ex: Portuguesa, Italiana, Árabe..."
+    select_meal: "Selecione um tipo de comida"
+    select_meals_example: "Ex: Café da manhã, Acompanhamento, Prato Principal..."
+    select_difficulty: "Seleciona a dificuldade"
+  recipes:
+    create:
+      success: 'Receita cadastrada com sucesso'
+      error: "Não foi possível cadastrar a receita"
+  activerecord:
+    models:
+      recipe:
+        one: 'Receita'
+        other: 'Receitas'
+    attributes:
+      recipe:
+        name: 'Nome'
+        cuisine_id: 'Cozinha'
+        meal_id: 'Tipo de Comida'
+        portion: 'Porção'
+        preparation_time: 'Tempo de Preparo'
+        difficulty: 'Dificuldade'
+        difficulties:
+          easy: 'Fácil'
+          medium: 'Médio'
+          hard: 'Difícil'
+        ingredients: 'Ingredientes'
+        instructions: 'Instruções'

@@ -1,0 +1,31 @@
+<h1><%= @recipe.name %></h1>
+<dl class="dl-horizontal">
+  <p>
+    <dt><%=t(".cuisine_id")%></dt>
+    <dd><%= @recipe.cuisine.name %></dd>
+  </p>
+  <p>
+    <dt><%=t(".meal_id")%></dt>
+    <dd><%= @recipe.meal.name %></dd>
+  </p>
+  <p>
+    <dt><%=t(".portion")%></dt>
+    <dd><%= @recipe.portion %></dd>
+  </p>
+  <p>
+    <dt><%=t(".preparation_time")%></dt>
+    <dd><%= @recipe.preparation_time %></dd>
+  </p>
+  <p>
+    <dt><%=t(".difficultyi")%></dt>
+    <dd><%= @recipe.difficulty %></dd>
+  </p>
+  <p>
+    <dt><%=t(".ingredients")%></dt>
+    <dd><%= @recipe.ingredients %></dd>
+  </p>
+  <p>
+    <dt><%=t(".instructions")%></dt>
+    <dd><%= @recipe.instructions %></dd>
+  </p>
+</dl>
