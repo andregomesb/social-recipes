@@ -25,6 +25,8 @@ pt-BR:
     create:
       success: 'Tipo de Comida cadastrada com sucesso'
       error: 'Não foi possível cadastrar o tipo de comida'
+    show:
+      empty: 'Nenhuma receita cadastrada'
   users:
     create:
       success: 'Usuário cadastrado com sucesso'

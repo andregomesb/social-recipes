@@ -8,7 +8,7 @@
 
     <fieldset class="form-group">
       <%= f.label :cuisine_id %>
-      <%= f.collection_select(:cuisine_id, @cuisine, :id, :name, { prompt: t(:select_cuisine, scope:[:select_prompt]) }, class: "form-control")%>
+      <%= f.collection_select(:cuisine_id, @cuisines, :id, :name, { prompt: t(:select_cuisine, scope:[:select_prompt]) }, class: "form-control")%>
       <p class="help-block"><em>
         <%= t(:select_cuisines_example, scope:[:select_prompt])%>
       </em></p>
@@ -16,7 +16,7 @@
 
     <fieldset class="form-group">
       <%= f.label :meal_id %>
-      <%= f.collection_select(:meal_id, @meal, :id, :name, { prompt: t(:select_meal, scope:[:select_prompt]) }, class: "form-control")%>
+      <%= f.collection_select(:meal_id, @meals, :id, :name, { prompt: t(:select_meal, scope:[:select_prompt]) }, class: "form-control")%>
       <p class="help-block"><em>
         <%= t(:select_meals_example, scope:[:select_prompt])%>
       </em></p>

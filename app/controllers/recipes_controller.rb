@@ -1,8 +1,7 @@
 class RecipesController < ApplicationController
 
   before_action :set_recipe, only:[:show]
-  before_action :set_cuisine, only: [:index, :search]
-  before_action :set_collection, only:[:new]
+  before_action :set_collection, only:[:index, :new, :search]
 
   LATEST_RECIPES_HOME = 20
 
@@ -36,7 +35,6 @@ class RecipesController < ApplicationController
   end
 
   private
-
   def recipe_params
     params.require(:recipe).permit(:name, :cuisine_id, :meal_id, :portion,
                                    :preparation_time, :difficulty,
@@ -47,13 +45,9 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
-  def set_cuisine
-    @cuisines = Cuisine.all
-  end
-
   def set_collection
-    @cuisine = Cuisine.all
-    @meal = Meal.all
+    @cuisines = Cuisine.all
+    @meals = Meal.all
     @difficulties = Recipe.difficulty_select
   end
 end

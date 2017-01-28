@@ -8,6 +8,12 @@
           <%= link_to cuisine.name, cuisine %>
         <% end %>
       </div>
+
+      <div class="meal-aside">
+        <% @meals.each do |meal| %>
+          <%= link_to meal.name, meal %>
+        <% end %>
+      </div>
     </aside>
   </div> <div class="col-md-8 col-sm-12">
     <%= render @recipes %>
