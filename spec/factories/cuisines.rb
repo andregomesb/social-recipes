@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :cuisine do
-    name 'USA'
+    name 'Italian'
   end
 end

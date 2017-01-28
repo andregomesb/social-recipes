@@ -25,6 +25,14 @@ pt-BR:
     create:
       success: 'Tipo de Comida cadastrada com sucesso'
       error: 'Não foi possível cadastrar o tipo de comida'
+  users:
+    create:
+      success: 'Usuário cadastrado com sucesso'
+      error: 'Não foi possível cadastrar o usuário'
+  sessions:
+    new:
+      email: 'Usuário'
+      password: 'Senha'
   activerecord:
     models:
       recipe:
@@ -36,6 +44,9 @@ pt-BR:
       meal:
         one: 'Tipo de Comida'
         other: 'Tipos de Comida'
+      user:
+        one: 'Usuário'
+        other: 'Usuários'
     attributes:
       meal:
         name: 'Tipo de Comida'
@@ -54,3 +65,8 @@ pt-BR:
           hard: 'Difícil'
         ingredients: 'Ingredientes'
         instructions: 'Instruções'
+      user:
+        name: 'Nome'
+        email: 'Email'
+        password: 'Senha'
+        password_confirmation: 'Confirme a senha'

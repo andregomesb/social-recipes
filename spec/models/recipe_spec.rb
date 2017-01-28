@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe Recipe, :type => :model do
+RSpec.describe Recipe, type: :model do
     it 'should be valid' do
       recipe = Recipe.create()
       expect(recipe).not_to be_valid
