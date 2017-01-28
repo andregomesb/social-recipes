@@ -1,4 +1,5 @@
 class Recipe < ApplicationRecord
+  belongs_to :user
   belongs_to :cuisine
   belongs_to :meal
   enum difficulty: [:easy, :medium, :hard]

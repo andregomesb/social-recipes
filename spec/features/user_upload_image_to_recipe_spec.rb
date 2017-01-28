@@ -2,7 +2,9 @@ require 'rails_helper'
 
 feature 'User upload image to recipe' do
   scenario 'successfully' do
-    recipe = build(:recipe)
+    user = create(:user)
+    recipe = build(:recipe, user: user)
+    log_in_user user
 
     visit root_path
 
@@ -26,7 +28,10 @@ feature 'User upload image to recipe' do
   end
 
   scenario 'and default image, if none is uploaded' do
-      recipe = build(:recipe)
+      user = create(:user)
+      recipe = build(:recipe, user: user)
+      log_in_user user
+
       visit root_path
 
     click_on 'Cadastrar Receita'

@@ -14,9 +14,9 @@
       <%= render 'search' %>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
-          <li><%= link_to "Profile", current_user %></li>
-          <li><a href="#">Cadastrar Receita</a></li>
-          <li><a href="#">Minhas Receitas</a></li>
+          <li><%= link_to current_user.name, current_user %></li>
+          <li><%= link_to 'Cadastrar Receita', new_recipe_path %></li>
+          <li><%= link_to 'Minhas Receitas', recipes_user_path(current_user) %></li>
           <li><%= link_to 'Sair', logout_path, method: :delete %></li>
         <% else %>
           <li><%= link_to 'Entrar', login_path %></li>

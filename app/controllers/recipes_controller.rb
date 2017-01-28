@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
 
-  before_action :set_recipe, only:[:show]
-  before_action :set_collection, only:[:index, :new, :search]
+  before_action :set_recipe, only:[:show, :edit, :update, :destroy]
+  before_action :set_collection, only:[:index, :new, :edit, :search]
 
   LATEST_RECIPES_HOME = 20
 
@@ -15,6 +15,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new recipe_params
+    @recipe.user_id = current_user.id
     if @recipe.save
       redirect_to @recipe, notice: t('.success')
     else
@@ -25,6 +26,24 @@ class RecipesController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @recipe.update(recipe_params)
+      redirect_to @recipe, notice: "Receita atualizada com sucesso"
+    else
+      set_collection
+      flash[:alert] = "Não foi possível atualizar a receita"
+      render :edit
+    end
+  end
+
+  def destroy
+    @recipe.destroy
+    redirect_to recipes_user_path(@recipe.user), notice: 'Receita deletada com sucesso'
   end
 
   def search

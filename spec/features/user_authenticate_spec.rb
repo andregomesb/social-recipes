@@ -32,7 +32,7 @@ feature 'User authenticates' do
 
     expect(page).not_to have_content "Logado com sucesso"
     expect(page).not_to have_content "Bem-vindo #{user.name}"
-    expect(page).not_to have_content user.name
+    expect(page).not_to have_css('h1', text: user.name)
     expect(page).to have_content another_user.name
   end
 

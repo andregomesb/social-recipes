@@ -2,7 +2,9 @@ require 'rails_helper'
 
 feature 'User creates recipes' do
   scenario 'successfully' do
-    recipe = build(:recipe)
+    user = create(:user)
+    log_in_user user
+    recipe = build(:recipe, user: user)
 
     visit root_path
 
@@ -26,6 +28,9 @@ feature 'User creates recipes' do
 
 
   scenario 'and validates fields' do
+    user = create(:user)
+    log_in_user user
+
     visit root_path
 
     click_on 'Cadastrar Receita'

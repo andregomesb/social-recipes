@@ -6,6 +6,7 @@ FactoryGirl.define do
 
   factory :recipe do
     name 'Fried Masala Chicken'
+    user
     cuisine
     meal
     portion 3

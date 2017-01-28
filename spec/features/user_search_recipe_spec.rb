@@ -14,12 +14,13 @@ feature 'User searches for a recipe' do
   end
 
   scenario 'and found multiples' do
+    user = create(:user)
     cuisine = create(:cuisine)
     meal = create(:meal)
     recipe = create(:recipe, name: "Bolinho de arroz", cuisine: cuisine,
-                    meal: meal)
+                    meal: meal, user: user)
     another_recipe = create(:recipe, name: "Arroz com lentilha",
-                            cuisine: cuisine, meal: meal)
+                            cuisine: cuisine, meal: meal, user:user)
     search_term = 'arroz'
 
     visit root_path

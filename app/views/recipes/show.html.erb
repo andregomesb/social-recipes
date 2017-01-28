@@ -32,3 +32,8 @@
     <dd><%= @recipe.instructions %></dd>
   </p>
 </dl>
+
+<% if permition?(@recipe.user_id) %>
+  <%= link_to 'Editar', edit_recipe_path(@recipe) %>
+  <%= link_to 'Deletar', recipe_path(@recipe), method: :delete %>
+<% end %>
