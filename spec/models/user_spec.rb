@@ -8,6 +8,12 @@ RSpec.describe User, type: :model do
     expect(user.errors[:email]).to      include(I18n.t 'errors.messages.blank')
     expect(user.errors[:email]).to      include(I18n.t 'errors.messages.invalid')
     expect(user.errors[:password]).to         include(I18n.t 'errors.messages.blank')
-    expect(user.errors[:password]).to         include(I18n.t 'errors.messages.too_short', count:6)
+  end
+
+  it 'password should have minimum' do
+    user = User.create(password:'abcd')
+    expect(user).not_to be_valid
+    expect(user.errors[:password]).to include(I18n.t 'errors.messages.too_short',
+                                              count:6)
   end
 end

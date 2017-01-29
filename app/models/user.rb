@@ -5,10 +5,13 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  validates :name, :email, :password, presence: true
-  validates :email, uniqueness: {case_sensitive: false},
+  validates :name, :city, presence: true
+  validates :email, presence: true,
+                    uniqueness: {case_sensitive: false},
                     format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
-  validates :password, length: { minimum: 6 }
+  validates :password, presence: true,
+                       length: { minimum: 6 },
+                       allow_nil: true
 
   before_save :email_formatting
 

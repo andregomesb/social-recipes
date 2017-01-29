@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only:[:show, :recipes, :show_recipes]
+  before_action :ignore_password, only:[:update]
+  before_action :set_user, only:[:show, :edit, :update, :show_recipes]
 
   def new
     @user = User.new
@@ -12,11 +13,23 @@ class UsersController < ApplicationController
       redirect_to @user, notice: t('.success')
     else
       flash[:alert] = t('.error')
-      render 'new'
+      render :edit
     end
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to @user, notice: t('.success')
+    else
+      flash[:alert] = t('.error')
+      render :edit
+    end
   end
 
   def show_recipes
@@ -27,10 +40,17 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :city, :email, :password, :password_confirmation)
   end
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def ignore_password
+    if user_params[:password].empty? && user_params[:password_confirmation].empty?
+      user_params.delete(:password)
+      user_params.delete(:password_confirmation)
+    end
   end
 end

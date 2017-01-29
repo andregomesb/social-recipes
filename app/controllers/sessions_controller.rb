@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       redirect_to @user, notice: "Logado com sucesso"
     else
       flash[:alert] = "Usuário ou senha inválidos"
-      render 'new'
+      render :new
     end
   end
 

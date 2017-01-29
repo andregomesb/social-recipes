@@ -9,6 +9,7 @@ feature 'Visitor creates a user' do
     click_on 'Inscreva-se'
 
     fill_in 'Nome', with: user.name
+    fill_in 'Cidade', with: user.city
     fill_in 'Email', with: user.email
     fill_in 'Senha', with: user.password
     fill_in 'Confirme a senha', with: user.password_confirmation

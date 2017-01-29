@@ -33,6 +33,9 @@ pt-BR:
     create:
       success: 'Usuário cadastrado com sucesso'
       error: 'Não foi possível cadastrar o usuário'
+    update:
+      success: 'Usuário atualizado com sucesso'
+      error: 'Não foi possível atualizar o usuário'
     show:
       empty: 'Nenhuma receita cadastrada'
   sessions:
@@ -73,6 +76,7 @@ pt-BR:
         instructions: 'Instruções'
       user:
         name: 'Nome'
+        city: 'Cidade'
         email: 'Email'
         password: 'Senha'
         password_confirmation: 'Confirme a senha'

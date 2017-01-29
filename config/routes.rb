@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   resources :cuisines, only:[:new, :create, :show]
   resources :meals, only: [:new, :create, :show]
-  resources :users, only:[:create, :show] do
+  resources :users, only:[:create, :show, :edit, :update] do
     get 'recipes', to: 'users#show_recipes', as:'recipes', on: :member
   end
 
