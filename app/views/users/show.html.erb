@@ -11,6 +11,9 @@
     <section class="user_info">
       <%= @user.email %>
       <%= @user.city %>
+      <%= @user.facebook %>
+      <%=link_to 'Facebook', "http://facebook.com/#{@user.facebook}" %>
+      <%=link_to 'Twitter', "http://twitter.com/#{@user.twitter}" %>
     </section>
   </div>
 

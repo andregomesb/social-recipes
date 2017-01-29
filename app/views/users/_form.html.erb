@@ -8,11 +8,6 @@
       </fieldset>
 
       <fieldset class="form-group">
-        <%= f.label :city %>
-        <%= f.text_field :city, class: 'form-control'  %>
-      </fieldset>
-
-      <fieldset class="form-group">
         <%= f.label :email %>
         <%= f.email_field :email, class: 'form-control'  %>
       </fieldset>
@@ -25,6 +20,21 @@
       <fieldset class="form-group">
         <%= f.label :password_confirmation%>
         <%= f.password_field :password_confirmation, class: 'form-control'  %>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <%= f.label :city %>
+        <%= f.text_field :city, class: 'form-control'  %>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <%= f.label :facebook, "Facebook" %>
+        <%= f.text_field :facebook, class: 'form-control'  %>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <%= f.label :twitter, "Twitter" %>
+        <%= f.text_field :twitter, class: 'form-control'  %>
       </fieldset>
 
       <%= f.submit class: "btn btn-primary" %>

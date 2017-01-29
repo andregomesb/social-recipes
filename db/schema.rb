@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170129151334) do
+ActiveRecord::Schema.define(version: 20170129163150) do
 
   create_table "cuisines", force: :cascade do |t|
     t.string   "name"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 20170129151334) do
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
     t.string   "city"
+    t.string   "facebook"
+    t.string   "twitter"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
