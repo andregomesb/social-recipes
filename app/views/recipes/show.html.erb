@@ -4,6 +4,10 @@
     <%= image_tag @recipe.recipe_image.url(:medium) %>
   </p>
   <p>
+    <dt><%=t(:created_by, scope: [:recipes, :show])%></dt>
+    <dd><%= link_to @recipe.user.name, @recipe.user %></dd>
+  </p>
+  <p>
     <dt><%=t(:cuisine_id, scope: [:activerecord, :attributes, :recipe])%></dt>
     <dd><%= @recipe.cuisine.name %></dd>
   </p>

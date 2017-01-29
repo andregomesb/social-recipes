@@ -15,6 +15,8 @@ pt-BR:
     create:
       success: 'Receita cadastrada com sucesso'
       error: 'Não foi possível cadastrar a receita'
+    show:
+      created_by: 'Criado por'
   cuisines:
     create:
       success: 'Cozinha cadastrada com sucesso'
@@ -31,6 +33,8 @@ pt-BR:
     create:
       success: 'Usuário cadastrado com sucesso'
       error: 'Não foi possível cadastrar o usuário'
+    show:
+      empty: 'Nenhuma receita cadastrada'
   sessions:
     new:
       email: 'Usuário'
