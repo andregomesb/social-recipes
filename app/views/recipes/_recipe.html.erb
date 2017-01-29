@@ -7,7 +7,7 @@
                                     :recipe,
                                     :difficulties]) %>
 </p>
-<% if permition?(recipe.user_id) %>
+<% if authorize?(recipe.user) %>
   <%= link_to 'Editar', edit_recipe_path(recipe) %>
   <%= link_to 'Deletar', recipe_path(recipe), method: :delete %>
 <% end %>

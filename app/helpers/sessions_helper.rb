@@ -29,11 +29,11 @@ module SessionsHelper
     redirect_to(root_url) unless @user == current_user
   end
 
-  def authorize?
-    @user == current_user
+  def authorize? user
+    user == current_user
   end
 
-  def permition?(user_id)
-    current_user.id == user_id if logged_in?
+  def favorited?
+    current_user.favorites.include?(@recipe)
   end
 end

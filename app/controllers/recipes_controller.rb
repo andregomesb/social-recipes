@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
 
-  before_action :set_recipe, only:[:show, :edit, :update, :destroy]
+  before_action :set_recipe, only:[:show, :edit, :update, :destroy, :favorite]
   before_action :set_collection, only:[:index, :new, :edit, :search]
 
   LATEST_RECIPES_HOME = 20
@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new recipe_params
-    @recipe.user_id = current_user.id
+    @recipe.user = current_user
     if @recipe.save
       redirect_to @recipe, notice: t('.success')
     else
@@ -43,6 +43,7 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe.destroy
+    # redirect_back(fallback_location: root_path)
     redirect_to recipes_user_path(@recipe.user), notice: 'Receita deletada com sucesso'
   end
 
@@ -51,6 +52,19 @@ class RecipesController < ApplicationController
     @recipes = Recipe.search(search_recipe)
     flash[:notice] = I18n.t(:results, count: @recipes.size)
     render :index
+  end
+
+  def favorite
+    favorite = params[:favorite] == "true"
+    if favorite
+      current_user.favorites << @recipe
+      flash[:notice] = 'Favoritado'
+    else
+      current_user.favorites.delete(@recipe)
+      flash[:notice] = 'Desfavoritado'
+    end
+
+    redirect_to @recipe
   end
 
   private

@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def show_recipes
-    unless authorize?
+    unless authorize? @user
       redirect_to root_path, alert: 'Acesso Negado'
     end
   end

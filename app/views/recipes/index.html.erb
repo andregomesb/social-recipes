@@ -3,14 +3,16 @@
   <div class="col-md-4 col-sm-12">
     <aside>
       <div class="cuisine-aside">
+      <h2>Cozinha</h2>
         <% @cuisines.each do |cuisine| %>
           <%= link_to cuisine.name, cuisine %>
         <% end %>
       </div>
 
       <div class="meal-aside">
+        <h2>Tipo de Comida</h2>
         <% @meals.each do |meal| %>
-          <%= link_to meal.name, meal %>
+          <p><%= link_to meal.name, meal %></p>
         <% end %>
       </div>
     </aside>

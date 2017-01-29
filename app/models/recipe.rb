@@ -2,6 +2,10 @@ class Recipe < ApplicationRecord
   belongs_to :user
   belongs_to :cuisine
   belongs_to :meal
+
+  has_many :favorite_recipes
+  has_many :favorited_by, through: :favorite_recipes, source: :user
+
   enum difficulty: [:easy, :medium, :hard]
   validates :name, :ingredients, :instructions, presence: true
 
