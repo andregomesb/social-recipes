@@ -6,7 +6,8 @@ class RecipesController < ApplicationController
   LATEST_RECIPES_HOME = 20
 
   def index
-    @recipes = Recipe.last(LATEST_RECIPES_HOME)
+    @recipes = Recipe.order(created_at: :desc).limit(LATEST_RECIPES_HOME)
+    @favorites = Recipe.joins(:favorite_recipes).select('recipes.*, COUNT(recipe_id) as recipe_count').group('recipes.id').order('recipe_count DESC')
   end
 
   def new

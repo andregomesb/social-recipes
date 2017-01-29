@@ -16,8 +16,16 @@
         <% end %>
       </div>
     </aside>
-  </div> <div class="col-md-8 col-sm-12">
-    <%= render @recipes %>
   </div>
 
+  <div class="col-md-4 col-sm-12 latest-recipes">
+    <h1>Últimas receitas</h1>
+    <%= render @recipes %>
+  </div>
+ <% if @favorites %>
+  <div class="col-md-4 col-sm-12">
+    <h2>Receitas favoritas</h2>
+    <%= render @favorites %>
+  </div>
+<% end %>
 </div>
