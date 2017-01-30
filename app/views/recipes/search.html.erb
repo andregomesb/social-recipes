@@ -1,0 +1,7 @@
+<h1>Pesquisa: <%= @search_recipe if @search_recipe%></h1>
+<div class="row">
+  <%= render 'aside' %>
+  <div class="col-md-8 col-md-offset-1">
+    <%= render(@recipes) || t(".empty") %>
+  </div>
+</div>

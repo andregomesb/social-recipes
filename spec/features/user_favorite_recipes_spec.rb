@@ -15,7 +15,7 @@ feature 'User favorites recipe' do
 
     visit root_path
     click_on another_recipe.name
-    click_on 'Favorite'
+    page.find("#favorite").click
     expect(user.favorites).to include(another_recipe)
     expect(page).to have_content 'Favoritado'
   end
@@ -34,8 +34,8 @@ feature 'User favorites recipe' do
 
     visit root_path
     click_on another_recipe.name
-    click_on 'Favorite'
-    click_on 'Favorite'
+    page.find("#favorite").click
+    page.find("#favorite").click
     expect(user.favorites).not_to include(another_recipe)
     expect(page).to have_content 'Desfavoritado'
   end

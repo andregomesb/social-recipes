@@ -1,6 +1,7 @@
 <%= form_for @cuisine do |f| %>
   <fieldset class="form-group">
     <%= f.label :name %>
+    <%= render partial: 'form_notification', locals: {object: @cuisine, field: :name} %>
     <%= f.text_field :name, class: "form-control" %>
     <p class="help-block"><em>
       <%= t(:select_cuisines_example, scope:[:select_prompt])%>

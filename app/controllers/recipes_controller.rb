@@ -50,10 +50,10 @@ class RecipesController < ApplicationController
   end
 
   def search
-    search_recipe = params[:search]
-    @recipes = Recipe.search(search_recipe)
-    flash.now[:notice] = I18n.t(:results, count: @recipes.size)
-    render :index
+    @search_recipe = params[:search]
+    @recipes = Recipe.search(@search_recipe)
+    flash[:notice] = I18n.t(:results, count: @recipes.size)
+
   end
 
   def favorite

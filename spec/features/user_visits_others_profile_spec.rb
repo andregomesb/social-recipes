@@ -13,7 +13,6 @@ feature 'User visits others profiles' do
     click_on visited_user.name
 
     expect(page).to have_content visited_user.name
-    expect(page).to have_content visited_user.email
     expect(page).to have_content visited_user.city
     expect(page).to have_content "Receitas de #{visited_user.name}"
     expect(page).to have_link recipe.name

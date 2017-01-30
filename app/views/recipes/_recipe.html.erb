@@ -1,10 +1,19 @@
-<h3> <%= link_to recipe.name, recipe %> </h3>
-<p> <%= recipe.meal.name%></p>
-<p> <%= recipe.cuisine.name %></p>
+<div class="col-md-6">
+<h2> <%= link_to recipe.name, recipe %> </h2>
+
 <p>
-    <%= t(recipe.difficulty , scope:[:activerecord,
-                                    :attributes,
-                                    :recipe,
-                                    :difficulties]) %>
+  <strong><%=t(:meal_id, scope: [:activerecord, :attributes, :recipe])%>:</strong>
+  <%= recipe.meal.name%></p>
+<p>
+  <strong><%= t(:cuisine_id, scope: [:activerecord, :attributes, :recipe])%>:</strong>
+  <%= recipe.cuisine.name %></p>
+<p>
+  <strong><%=t(:difficulty, scope: [:activerecord, :attributes, :recipe])%>:</strong>
+  <%= t(recipe.difficulty , scope:[:activerecord,
+                                  :attributes,
+                                  :recipe,
+                                  :difficulties]) %>
 </p>
+
 <%= render partial: 'recipes/recipe_control', locals:{recipe: recipe} %>
+</div>

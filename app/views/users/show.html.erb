@@ -1,28 +1,32 @@
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-6 col-md-offset-3">
     <h1>
       <% if current_user == @user %>
-        <%=  "Bem-vindo #{current_user.name}" %>
+        <%= "Bem-vindo #{current_user.name}" %>
       <% else %>
         <%= @user.name %>
-      <%end %>
+      <% end %>
+
+      <%= link_to fa_icon("address-card", class: "fa-1x"),"mailto:#{@user.email}" %>
+      <%=link_to "http://facebook.com#{@user.facebook}" do%>
+        <%= fa_icon("facebook-official", class: "fa-1x") %>
+      <% end %>
+      <%=link_to "http://twitter.com#{@user.twitter}" do %>
+        <%= fa_icon("twitter", class: "fa-1x") %>
+      <% end %>
     </h1>
+    <h4><%= @user.city %></h4>
 
-    <section class="user_info">
-      <%= @user.email %>
-      <%= @user.city %>
-      <%= @user.facebook %>
-      <%=link_to 'Facebook', "http://facebook.com/#{@user.facebook}" %>
-      <%=link_to 'Twitter', "http://twitter.com/#{@user.twitter}" %>
-    </section>
   </div>
-
-  <div class="col-md-4">
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-6">
     <h2>Receitas de <%= @user.name%></h2>
     <%= render @user.recipes %>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-6 col-md-offset">
     <h2>Favoritos de <%= @user.name%></h2>
     <%= render @favorites %>
   </div>

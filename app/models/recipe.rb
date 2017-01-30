@@ -9,8 +9,8 @@ class Recipe < ApplicationRecord
   enum difficulty: [:easy, :medium, :hard]
   validates :name, :ingredients, :instructions, presence: true
 
-  has_attached_file :recipe_image, styles: {large: "600x600", medium: "300x300>", thumb: "100x100>" }, default_url: "/images/missing.jpg"
-  validates_attachment_content_type :recipe_image, content_type: /\Aimage\/.*\z/
+  has_attached_file :recipe_image, styles: {large: "600x600", medium: "300x300>", thumb: "100x100>" }, path: "#{Rails.root}/public/system/:class/:attachment/:id_partition/:style/:filename", default_url: "/images/missing.jpg"
+  validates_attachment_content_type :recipe_image, content_type: ["image/jpg", "image/png", "image/jpeg"]
 
   def self.difficulty_select
     Recipe.difficulties.keys.map do |k|

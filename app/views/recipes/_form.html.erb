@@ -3,16 +3,19 @@
   <%= form_for @recipe, html: {multipart: true} do |f| %>
     <fieldset class="form-group">
       <%= f.label :name %>
+      <%= render partial: 'form_notification', locals: {object: @recipe, field: :name} %>
       <%= f.text_field :name, class: "form-control" %>
     </fieldset>
 
     <fieldset class="form-group">
       <%= f.label :cuisine_id %>
+      <%= render partial: 'form_notification', locals: {object: @recipe, field: :name} %>
       <%= f.collection_select(:cuisine_id, @cuisines, :id, :name, { prompt: t(:select_cuisine, scope:[:select_prompt]) }, class: "form-control")%>
     </fieldset>
 
     <fieldset class="form-group">
       <%= f.label :meal_id %>
+      <%= render partial: 'form_notification', locals: {object: @recipe, field: :name} %>
       <%= f.collection_select(:meal_id, @meals, :id, :name, { prompt: t(:select_meal, scope:[:select_prompt]) }, class: "form-control")%>
     </fieldset>
 
@@ -28,6 +31,7 @@
 
     <fieldset class="form-group">
       <%= f.label :difficulty%>
+      <%= render partial: 'form_notification', locals: {object: @recipe, field: :name} %>
       <%= f.select :difficulty, options_for_select(@difficulties), { prompt: t(:select_difficulty, scope:[:select_prompt]) }, class: "form-control" %>
     </fieldset>
 
@@ -38,12 +42,14 @@
 
     <fieldset class="form-group">
       <%= f.label :ingredients %>
+      <%= render partial: 'form_notification', locals: {object: @recipe, field: :name} %>
       <%= f.text_area :ingredients, class: "form-control", rows: 5 %>
       <p class="help-block">Here goes some suggestion about the formatting</p>
     </fieldset>
 
     <fieldset class="form-group">
       <%= f.label :instructions %>
+      <%= render partial: 'form_notification', locals: {object: @recipe, field: :name} %>
       <%= f.text_area :instructions, class: "form-control", rows: 7 %>
       <p class="help-block">Here goes some suggestion about the formatting</p>
     </fieldset>

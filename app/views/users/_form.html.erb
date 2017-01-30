@@ -4,26 +4,31 @@
 
       <fieldset class="form-group">
         <%= f.label :name %>
+        <%= render partial: 'form_notification', locals: {object: @user, field: :name} %>
         <%= f.text_field :name, class: 'form-control'  %>
       </fieldset>
 
       <fieldset class="form-group">
         <%= f.label :email %>
+        <%= render partial: 'form_notification', locals: {object: @user, field: :name} %>
         <%= f.email_field :email, class: 'form-control'  %>
       </fieldset>
 
       <fieldset class="form-group">
         <%= f.label :password %>
+        <%= render partial: 'form_notification', locals: {object: @user, field: :name} %>
         <%= f.password_field :password, class: 'form-control'  %>
       </fieldset>
 
       <fieldset class="form-group">
         <%= f.label :password_confirmation%>
+        <%= render partial: 'form_notification', locals: {object: @user, field: :name} %>
         <%= f.password_field :password_confirmation, class: 'form-control'  %>
       </fieldset>
 
       <fieldset class="form-group">
         <%= f.label :city %>
+        <%= render partial: 'form_notification', locals: {object: @user, field: :name} %>
         <%= f.text_field :city, class: 'form-control'  %>
       </fieldset>
 

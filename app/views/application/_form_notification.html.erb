@@ -1,0 +1,6 @@
+<% if object.errors.has_key? field %>
+  <div class="error-message">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <%= object.errors[field].first %><br>
+  </div>
+<% end %>

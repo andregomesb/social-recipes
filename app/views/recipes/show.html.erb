@@ -1,56 +1,79 @@
-<h1><%= @recipe.name %></h1>
-<dl class="dl-horizontal">
-  <p>
+<div class="row">
+<div class="col-md-6">
+  <h1>
+    <%= @recipe.name %>
+    <%= render partial: 'recipes/recipe_control', locals:{recipe: @recipe} %>
+  </h1>
+  <br>
+  <dl class="dl-horizontal">
+    <p>
+      <dt><%=t(:created_by, scope: [:recipes, :show])%></dt>
+      <dd><%= link_to @recipe.user.name, @recipe.user %></dd>
+    </p>
+    <p>
+      <dt><%=t(:cuisine_id, scope: [:activerecord, :attributes, :recipe])%></dt>
+      <dd><%= @recipe.cuisine.name %></dd>
+    </p>
+    <p>
+      <dt><%=t(:meal_id, scope: [:activerecord, :attributes, :recipe])%></dt>
+      <dd><%= @recipe.meal.name %></dd>
+    </p>
+    <p>
+      <dt><%=t(:portion, scope: [:activerecord, :attributes, :recipe])%></dt>
+      <dd><%= @recipe.portion %></dd>
+    </p>
+    <p>
+      <dt><%=t(:preparation_time, scope: [:activerecord, :attributes, :recipe])%></dt>
+      <dd><%= @recipe.preparation_time %></dd>
+    </p>
+    <p>
+      <dt><%=t(:difficulty, scope: [:activerecord, :attributes, :recipe])%></dt>
+      <dd><%= t(@recipe.difficulty, scope: [:activerecord, :attributes, :recipe, :difficulties]) %></dd>
+    </p>
+    <p>
+      <dt><%=t(:favorited_by, scope: [:activerecord, :attributes, :recipe])%></dt>
+      <dd><%= @recipe.favorited_by.size %></dd>
+    </p>
+  </dl>
+</div>
+
+  <div class="col-md-6">
     <%= image_tag @recipe.recipe_image.url(:medium) %>
-  </p>
-  <p>
-    <dt><%=t(:created_by, scope: [:recipes, :show])%></dt>
-    <dd><%= link_to @recipe.user.name, @recipe.user %></dd>
-  </p>
-  <p>
-    <dt><%=t(:cuisine_id, scope: [:activerecord, :attributes, :recipe])%></dt>
-    <dd><%= @recipe.cuisine.name %></dd>
-  </p>
-  <p>
-    <dt><%=t(:meal_id, scope: [:activerecord, :attributes, :recipe])%></dt>
-    <dd><%= @recipe.meal.name %></dd>
-  </p>
-  <p>
-    <dt><%=t(:portion, scope: [:activerecord, :attributes, :recipe])%></dt>
-    <dd><%= @recipe.portion %></dd>
-  </p>
-  <p>
-    <dt><%=t(:preparation_time, scope: [:activerecord, :attributes, :recipe])%></dt>
-    <dd><%= @recipe.preparation_time %></dd>
-  </p>
-  <p>
-    <dt><%=t(:difficulty, scope: [:activerecord, :attributes, :recipe])%></dt>
-    <dd><%= t(@recipe.difficulty, scope: [:activerecord, :attributes, :recipe, :difficulties]) %></dd>
-  </p>
-  <p>
-    <dt><%=t(:ingredients, scope: [:activerecord, :attributes, :recipe])%></dt>
-    <dd><%= @recipe.ingredients %></dd>
-  </p>
-  <p>
-    <dt><%=t(:instructions, scope: [:activerecord, :attributes, :recipe])%></dt>
-    <dd><%= @recipe.instructions %></dd>
-  </p>
+  </div>
+</div>
 
-  <p>
-    <dt><%=t(:favorited_by, scope: [:activerecord, :attributes, :recipe])%></dt>
-    <dd><%= @recipe.favorited_by.size %></dd>
-  </p>
-</dl>
+<div class="row">
+  <div class="col-md-6">
+    <h2><%=t(:ingredients, scope: [:activerecord, :attributes, :recipe])%></h2>
+    <p><%= @recipe.ingredients %></p>
+  </div>
+  <div class="col-md-6">
+    <h2><%=t(:instructions, scope: [:activerecord, :attributes, :recipe])%></h2>
+    <p><%= @recipe.instructions %></p>
+  </div>
+</div>
 
-<%= render partial: 'recipes/recipe_control', locals:{recipe: @recipe} %>
 
 <%if logged_in? %>
-  <%= link_to 'Favorite', favorite_recipe_path(@recipe, favorite: !favorited?), method: :put %>
+<hr>
+<div class="row">
+<div class="col-md-5 col-md-offset-1">
+  <%= link_to favorite_recipe_path(@recipe, favorite: !favorited?), method: :put, id:'favorite' do %>
+    <%= content_tag(:i, nil, class:"glyphicon glyphicon-star") if favorited? %>
+    <%= content_tag(:i, nil, class:"glyphicon glyphicon-star-empty") unless favorited? %>
+  <% end %>
+</div>
+
+<div class="col-md-6 ">
   <%= form_tag share_recipe_path, method: :post, class:"navbar-form navbar-left" do %>
     <div class="form-group">
     <%= text_field_tag(:share_recipe_email, nil, placeholder:'Email', class:"form-control") %>
     <%= submit_tag(t(:share_recipe_email), name: nil, class:"btn btn-default") %>
     </div>
   <% end %>
+</div>
+</div>
 <% end %>
+
+
 

@@ -1,8 +1,6 @@
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>Minhas Receitas</h1>
-      <%= render(current_user.recipes) || t("users.show.empty") %>
-    </section>
-  </aside>
+  <h1>Minhas Receitas</h1>
+  <div class="col-md-10 col-md-offset-2">
+    <%= render(current_user.recipes) || t("users.show.empty") %>
+  </div>
 </div>

@@ -1,4 +1,12 @@
-<h1><%= @meal.name %></h1>
-<%= link_to 'Editar', edit_meal_path(@meal) %>
-<%= link_to 'Deletar', meal_path(@meal), method: :delete %>
-<%= render(@meal.recipes) || t(".empty") %>
+<h1>
+  <%= @meal.name %>
+  <% if logged_in? && authorize?(current_user) %>
+    <%= link_to 'Editar', edit_meal_path(@meal), class: "btn btn-warning" %>
+    <%= link_to 'Deletar', meal_path(@meal), method: :delete, class: "btn btn-danger" %>
+  <% end %>
+</h1>
+<div class="row">
+  <div class="col-md-10 col-md-offset-2">
+    <%= render(@meal.recipes) || t(".empty") %>
+  </div>
+</div>
