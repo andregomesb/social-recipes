@@ -38,6 +38,9 @@
       </fieldset>
 
       <%= f.submit class: "btn btn-primary" %>
+      <% if current_user && authorize?(@user) %>
+        <%= link_to 'Deletar Conta', user_path(@user), method: :delete %>
+      <% end %>
     <% end %>
   </div>
 </div>

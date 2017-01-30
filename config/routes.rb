@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     post 'share', on: :member
   end
 
-  resources :users, only:[:create, :show, :edit, :update] do
+  resources :users, only:[:create, :show, :edit, :update, :destroy] do
     get 'recipes', to: 'users#show_recipes', on: :member
   end
 

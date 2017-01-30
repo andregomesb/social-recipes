@@ -7,7 +7,4 @@
                                     :recipe,
                                     :difficulties]) %>
 </p>
-<% if logged_in? && authorize?(recipe.user) %>
-  <%= link_to 'Editar', edit_recipe_path(recipe) %>
-  <%= link_to 'Deletar', recipe_path(recipe), method: :delete %>
-<% end %>
+<%= render partial: 'recipes/recipe_control', locals:{recipe: recipe} %>

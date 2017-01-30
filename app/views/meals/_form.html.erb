@@ -1,7 +1,10 @@
 <%= form_for @meal do |f| %>
-  <fieldset class="form-group" %>
+  <fieldset class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class: "form-control" %>
+    <p class="help-block"><em>
+        <%= t(:select_meals_example, scope:[:select_prompt])%>
+      </em></p>
   </fieldset>
   <%= f.submit class: "btn btn-primary"%>
 <% end %>

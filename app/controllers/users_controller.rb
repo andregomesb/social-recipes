@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :ignore_password, only:[:update]
-  before_action :set_user, only:[:show, :edit, :update, :show_recipes]
+  before_action :set_user, only:[:show, :edit, :update, :show_recipes, :destroy]
 
   def new
     @user = User.new
@@ -37,6 +37,11 @@ class UsersController < ApplicationController
     unless authorize? @user
       redirect_to root_path, alert: 'Acesso Negado'
     end
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to root_path, notice: 'Usuário deletado com sucesso'
   end
 
   private
