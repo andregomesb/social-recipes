@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :recipes do
     get 'search', on: :collection
     put 'favorite', on: :member
+    post 'share', on: :member
   end
   resources :cuisines, only:[:new, :create, :show]
   resources :meals, only: [:new, :create, :show]

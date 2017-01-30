@@ -7,6 +7,7 @@ pt-BR:
     select_meals_example: 'Ex: Café da manhã, Acompanhamento, Prato Principal...'
     select_difficulty: 'Seleciona a dificuldade'
   search: 'Procurar'
+  share_recipe_email: 'Compartilhar Receita'
   results:
     zero: 'Nenhum resultado encontrado'
     one: '%{count} resultado encontrado'
@@ -17,6 +18,7 @@ pt-BR:
       error: 'Não foi possível cadastrar a receita'
     show:
       created_by: 'Criado por'
+
   cuisines:
     create:
       success: 'Cozinha cadastrada com sucesso'

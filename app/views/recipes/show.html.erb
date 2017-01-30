@@ -44,4 +44,12 @@
 
 <%if logged_in? %>
   <%= link_to 'Favorite', favorite_recipe_path(@recipe, favorite: !favorited?), method: :put %>
+  <%= form_tag share_recipe_path, method: :post, class:"navbar-form navbar-left" do %>
+    <div class="form-group">
+    <%= text_field_tag(:share_recipe_email, nil, placeholder:'Email', class:"form-control") %>
+    <%= submit_tag(t(:share_recipe_email), name: nil, class:"btn btn-default") %>
+    </div>
+  <% end %>
+
 <% end %>
+

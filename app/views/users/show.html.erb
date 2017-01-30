@@ -17,8 +17,13 @@
     </section>
   </div>
 
-  <div class="col-md-8">
+  <div class="col-md-4">
     <h2>Receitas de <%= @user.name%></h2>
     <%= render @user.recipes %>
+  </div>
+
+  <div class="col-md-4">
+    <h2>Favoritos de <%= @user.name%></h2>
+    <%= render @favorites %>
   </div>
 </div>

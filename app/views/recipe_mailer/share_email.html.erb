@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Recipe: <%= @recipe.name %></h1>
+    <p>
+      <%=@user.name%> thinks you would love this <%= link_to 'recipe', recipe_url(@recipe) %>
+    </p>
+  </body>
+</html>

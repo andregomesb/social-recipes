@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @favorites = @user.favorites.order(created_at: :desc)
   end
 
   def edit

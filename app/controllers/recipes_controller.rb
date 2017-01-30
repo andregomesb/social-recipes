@@ -1,13 +1,14 @@
 class RecipesController < ApplicationController
 
-  before_action :set_recipe, only:[:show, :edit, :update, :destroy, :favorite]
+  before_action :set_recipe, only:[:show, :edit, :update, :destroy, :favorite, :share]
   before_action :set_collection, only:[:index, :new, :edit, :search]
 
   LATEST_RECIPES_HOME = 20
+  MOST_FAVORITES = 5
 
   def index
     @recipes = Recipe.order(created_at: :desc).limit(LATEST_RECIPES_HOME)
-    @favorites = Recipe.joins(:favorite_recipes).select('recipes.*, COUNT(recipe_id) as recipe_count').group('recipes.id').order('recipe_count DESC')
+    @favorites = Recipe.joins(:favorite_recipes).select('recipes.*, COUNT(recipe_id) as recipe_count').group('recipes.id').order('recipe_count DESC').limit(MOST_FAVORITES)
   end
 
   def new
@@ -21,7 +22,7 @@ class RecipesController < ApplicationController
       redirect_to @recipe, notice: t('.success')
     else
       set_collection
-      flash[:alert] = t('.error')
+      flash.now[:alert] = t('.error')
       render :new
     end
   end
@@ -37,7 +38,7 @@ class RecipesController < ApplicationController
       redirect_to @recipe, notice: "Receita atualizada com sucesso"
     else
       set_collection
-      flash[:alert] = "Não foi possível atualizar a receita"
+      flash.now[:alert] = "Não foi possível atualizar a receita"
       render :edit
     end
   end
@@ -51,7 +52,7 @@ class RecipesController < ApplicationController
   def search
     search_recipe = params[:search]
     @recipes = Recipe.search(search_recipe)
-    flash[:notice] = I18n.t(:results, count: @recipes.size)
+    flash.now[:notice] = I18n.t(:results, count: @recipes.size)
     render :index
   end
 
@@ -64,8 +65,20 @@ class RecipesController < ApplicationController
       current_user.favorites.delete(@recipe)
       flash[:notice] = 'Desfavoritado'
     end
-
     redirect_to @recipe
+  end
+
+  def share
+    mail_to = params[:share_recipe_email]
+    unless mail_to.empty?
+      RecipeMailer.share_email(current_user, @recipe, mail_to).deliver
+      flash.now[:notice] = 'Email enviado'
+      render :show
+    else
+      flash.now[:alert] = 'Ocorreu um erro, não foi possível enviar o email'
+      render :show
+    end
+
   end
 
   private
