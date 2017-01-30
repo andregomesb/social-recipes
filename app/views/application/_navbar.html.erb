@@ -16,6 +16,10 @@
         <% if logged_in? %>
           <li><%= link_to current_user.name, current_user %></li>
           <li><%= link_to 'Cadastrar Receita', new_recipe_path %></li>
+          <% if admin? %>
+            <li><%= link_to 'Cadastrar Cozinha', new_cuisine_path %></li>
+            <li><%= link_to 'Cadastrar Tipo de Comida', new_meal_path %></li>
+          <% end %>
           <li><%= link_to 'Minhas Receitas', recipes_user_path(current_user) %></li>
           <li><%= link_to 'Configurações', edit_user_path(current_user) %></li>
           <li><%= link_to 'Sair', logout_path, method: :delete %></li>

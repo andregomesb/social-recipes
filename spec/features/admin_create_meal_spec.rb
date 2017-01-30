@@ -3,6 +3,8 @@ require 'rails_helper'
 feature 'Admin creates meal' do
 
   scenario 'successfully' do
+    admin = create(:admin)
+    log_in_user admin
     meal = build(:meal)
 
     visit new_meal_path
@@ -15,6 +17,8 @@ feature 'Admin creates meal' do
   end
 
   scenario 'and validates field' do
+    admin = create(:admin)
+    log_in_user admin
     visit new_meal_path
 
     click_on 'Criar Tipo de Comida'
@@ -23,6 +27,8 @@ feature 'Admin creates meal' do
   end
 
   scenario 'and is unique' do
+    admin = create(:admin)
+    log_in_user admin
     meal = create(:meal)
 
     visit new_meal_path
@@ -34,6 +40,8 @@ feature 'Admin creates meal' do
   end
 
   scenario 'and uniqueness is case insensitive'do
+    admin = create(:admin)
+    log_in_user admin
     meal = create(:meal)
 
     visit new_meal_path

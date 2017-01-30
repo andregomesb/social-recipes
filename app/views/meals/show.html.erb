@@ -1,3 +1,4 @@
 <h1><%= @meal.name %></h1>
-
+<%= link_to 'Editar', edit_meal_path(@meal) %>
+<%= link_to 'Deletar', meal_path(@meal), method: :delete %>
 <%= render(@meal.recipes) || t(".empty") %>

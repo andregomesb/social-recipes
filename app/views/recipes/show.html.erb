@@ -35,9 +35,14 @@
     <dt><%=t(:instructions, scope: [:activerecord, :attributes, :recipe])%></dt>
     <dd><%= @recipe.instructions %></dd>
   </p>
+
+  <p>
+    <dt><%=t(:favorited_by, scope: [:activerecord, :attributes, :recipe])%></dt>
+    <dd><%= @recipe.favorited_by.size %></dd>
+  </p>
 </dl>
 
-<% if authorize?(@recipe.user) %>
+<% if logged_in? && authorize?(@recipe.user) %>
   <%= link_to 'Editar', edit_recipe_path(@recipe) %>
   <%= link_to 'Deletar', recipe_path(@recipe), method: :delete %>
 <% end %>
@@ -50,6 +55,5 @@
     <%= submit_tag(t(:share_recipe_email), name: nil, class:"btn btn-default") %>
     </div>
   <% end %>
-
 <% end %>
 

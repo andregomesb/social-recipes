@@ -76,6 +76,7 @@ pt-BR:
           hard: 'Difícil'
         ingredients: 'Ingredientes'
         instructions: 'Instruções'
+        favorited_by: 'Número de Favoritos'
       user:
         name: 'Nome'
         city: 'Cidade'

@@ -17,23 +17,21 @@ module SessionsHelper
     @current_user = nil
   end
 
-  def logged_in_user
-    unless logged_in?
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
-  end
-
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_url) unless @user == current_user
-  end
-
-  def authorize? user
-    user == current_user
+  def authorize?(user=nil)
+    user == current_user || admin?
   end
 
   def favorited?
     current_user.favorites.include?(@recipe)
+  end
+
+  def admin?
+    current_user.admin
+  end
+
+  def logged_as_admin
+    unless logged_in? && admin?
+      redirect_to root_path, alert: "Acesso Negado"
+    end
   end
 end
