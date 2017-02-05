@@ -53,6 +53,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem "factory_girl_rails"
+  gem 'simplecov', require: false
 end
 
 group :development do
