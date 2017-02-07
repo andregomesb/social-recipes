@@ -1,7 +1,6 @@
 class CuisinesController < ApplicationController
-
-  before_action :set_cuisine, only:[:show, :edit, :update, :destroy]
-  before_action :logged_as_admin, only:[:new, :edit, :destroy]
+  before_action :set_cuisine, only: [:show, :edit, :update, :destroy]
+  before_action :logged_as_admin, only: [:new, :edit, :destroy]
 
   def new
     @cuisine = Cuisine.new
@@ -11,18 +10,16 @@ class CuisinesController < ApplicationController
     @cuisine = Cuisine.new cuisine_params
 
     if @cuisine.save
-      redirect_to @cuisine, notice: t(".success")
+      redirect_to @cuisine, notice: t('.success')
     else
-      flash[:alert] = t(".error")
+      flash[:alert] = t('.error')
       render :new
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @cuisine.update(cuisine_params)

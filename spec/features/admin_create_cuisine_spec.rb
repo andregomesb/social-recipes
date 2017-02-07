@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'Admin creates cuisine' do
-
   scenario 'successfully' do
     admin = create(:admin)
     log_in_user admin
@@ -39,7 +38,7 @@ feature 'Admin creates cuisine' do
     expect(page).to have_content 'Não foi possível cadastrar a cozinha'
   end
 
-  scenario 'and uniqueness is case insensitive'do
+  scenario 'and uniqueness is case insensitive' do
     admin = create(:admin)
     log_in_user admin
     cuisine = create(:cuisine)

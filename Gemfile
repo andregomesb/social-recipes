@@ -54,6 +54,7 @@ group :development, :test do
   gem 'capybara'
   gem "factory_girl_rails"
   gem 'simplecov', require: false
+  gem 'rubocop', require: false
 end
 
 group :development do

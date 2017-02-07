@@ -14,7 +14,7 @@ feature 'User logout' do
     click_button 'Entrar'
     click_on 'Sair'
 
-    expect(page).to have_content "Logout com sucesso"
+    expect(page).to have_content 'Logout com sucesso'
     expect(page).to have_current_path(root_path)
   end
 end

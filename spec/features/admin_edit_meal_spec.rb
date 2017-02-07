@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Admin edits meal' do
-  scenario  'successfully' do
+  scenario 'successfully' do
     admin = create(:admin)
     meal = create(:meal)
     log_in_user admin
@@ -29,6 +29,6 @@ feature 'Admin edits meal' do
     fill_in 'Tipo de Comida', with: ''
     click_on 'Atualizar Tipo de Comida'
 
-    expect(page).to have_content "Não foi possível atualizar o tipo de comida"
+    expect(page).to have_content 'Não foi possível atualizar o tipo de comida'
   end
 end

@@ -7,8 +7,8 @@ class User < ApplicationRecord
 
   validates :name, :city, presence: true
   validates :email, presence: true,
-                    uniqueness: {case_sensitive: false},
-                    format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i}
+                    uniqueness: { case_sensitive: false },
+                    format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   validates :password, presence: true,
                        length: { minimum: 6 },
                        allow_nil: true,
@@ -17,6 +17,7 @@ class User < ApplicationRecord
   before_save :email_formatting
 
   private
+
   def email_formatting
     self.email = email.downcase
   end

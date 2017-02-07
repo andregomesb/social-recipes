@@ -17,10 +17,10 @@ feature 'User searches for a recipe' do
     user = create(:user)
     cuisine = create(:cuisine)
     meal = create(:meal)
-    recipe = create(:recipe, name: "Bolinho de arroz", cuisine: cuisine,
-                    meal: meal, user: user)
-    another_recipe = create(:recipe, name: "Arroz com lentilha",
-                            cuisine: cuisine, meal: meal, user:user)
+    recipe = create(:recipe, name: 'Bolinho de arroz', cuisine: cuisine,
+                             meal: meal, user: user)
+    another_recipe = create(:recipe, name: 'Arroz com lentilha',
+                                     cuisine: cuisine, meal: meal, user: user)
     search_term = 'arroz'
 
     visit root_path
@@ -35,7 +35,7 @@ feature 'User searches for a recipe' do
 
   scenario 'and found nothing' do
     recipe = create(:recipe)
-    search_term = "COMPUTER"
+    search_term = 'COMPUTER'
 
     visit root_path
 

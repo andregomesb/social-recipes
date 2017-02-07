@@ -1,15 +1,13 @@
 class SessionsController < ApplicationController
-
-  def new
-  end
+  def new; end
 
   def create
     @user = User.find_by(email: session_email)
     if @user && @user.authenticate(session_password)
       log_in @user
-      redirect_to @user, notice: "Logado com sucesso"
+      redirect_to @user, notice: 'Logado com sucesso'
     else
-      flash[:alert] = "Usuário ou senha inválidos"
+      flash[:alert] = 'Usuário ou senha inválidos'
       render :new
     end
   end
@@ -20,6 +18,7 @@ class SessionsController < ApplicationController
   end
 
   private
+
   def session_email
     params[:session][:email].downcase
   end

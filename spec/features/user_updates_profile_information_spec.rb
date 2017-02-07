@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 feature 'User updates profile information' do
   scenario 'successfully' do
     user = create(:user)

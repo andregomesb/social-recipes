@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :ignore_password, only:[:update]
-  before_action :set_user, only:[:show, :edit, :update, :show_recipes, :destroy]
+  before_action :ignore_password, only: [:update]
+  before_action :set_user, only: [:show, :edit, :update,
+                                  :show_recipes, :destroy]
 
   def new
     @user = User.new
@@ -21,8 +22,7 @@ class UsersController < ApplicationController
     @favorites = @user.favorites.order(created_at: :desc)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
@@ -34,9 +34,8 @@ class UsersController < ApplicationController
   end
 
   def show_recipes
-    unless authorize? @user
-      redirect_to root_path, alert: 'Acesso Negado'
-    end
+    return if authorize? @user
+    redirect_to root_path, alert: 'Acesso Negado'
   end
 
   def destroy
@@ -45,8 +44,10 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :city, :facebook, :twitter)
+    params.require(:user).permit(:name, :email, :password, :facebook, :twitter,
+                                 :password_confirmation, :city)
   end
 
   def set_user
@@ -54,7 +55,8 @@ class UsersController < ApplicationController
   end
 
   def ignore_password
-    if user_params[:password].empty? && user_params[:password_confirmation].empty?
+    if user_params[:password].empty? &&
+       user_params[:password_confirmation].empty?
       user_params.delete(:password)
       user_params.delete(:password_confirmation)
     end

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 feature 'Admin deletes user' do
-  scenario  'successfully' do
+  scenario 'successfully' do
     user = create(:user)
-    admin = create(:admin, email:'master@example.com')
+    admin = create(:admin, email: 'master@example.com')
     log_in_user admin
 
     visit edit_user_path(user)

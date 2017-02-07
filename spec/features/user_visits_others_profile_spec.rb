@@ -16,7 +16,7 @@ feature 'User visits others profiles' do
     expect(page).to have_content visited_user.city
     expect(page).to have_content "Receitas de #{visited_user.name}"
     expect(page).to have_link recipe.name
-    expect(page).not_to have_content "Editar"
-    expect(page).not_to have_content "Deletar"
+    expect(page).not_to have_content 'Editar'
+    expect(page).not_to have_content 'Deletar'
   end
 end

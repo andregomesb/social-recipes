@@ -27,8 +27,8 @@ feature 'Admin view create cuisine/meal in menu' do
 
     visit new_cuisine_path
 
-   expect(page).to have_current_path(root_path)
-   expect(page).to have_content 'Acesso Negado'
+    expect(page).to have_current_path(root_path)
+    expect(page).to have_content 'Acesso Negado'
   end
 
   scenario 'users can\'t access new meal path' do
@@ -37,8 +37,8 @@ feature 'Admin view create cuisine/meal in menu' do
 
     visit new_meal_path
 
-   expect(page).to have_current_path(root_path)
-   expect(page).to have_content 'Acesso Negado'
+    expect(page).to have_current_path(root_path)
+    expect(page).to have_content 'Acesso Negado'
   end
 
   scenario 'visitors can\'t see cuisine/meal in menu' do
@@ -51,14 +51,14 @@ feature 'Admin view create cuisine/meal in menu' do
   scenario 'visitors can\'t access new cuisine path' do
     visit new_cuisine_path
 
-   expect(page).to have_current_path(root_path)
-   expect(page).to have_content 'Acesso Negado'
+    expect(page).to have_current_path(root_path)
+    expect(page).to have_content 'Acesso Negado'
   end
 
   scenario 'visitors can\'t access new meal path' do
     visit new_meal_path
 
-   expect(page).to have_current_path(root_path)
-   expect(page).to have_content 'Acesso Negado'
+    expect(page).to have_current_path(root_path)
+    expect(page).to have_content 'Acesso Negado'
   end
 end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Admin deletes cuisine' do
-  scenario  'successfully' do
+  scenario 'successfully' do
     admin = create(:admin)
     cuisine = create(:cuisine)
     log_in_user admin

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Admin deletes meal' do
-  scenario  'successfully' do
+  scenario 'successfully' do
     admin = create(:admin)
     meal = create(:meal)
     log_in_user admin

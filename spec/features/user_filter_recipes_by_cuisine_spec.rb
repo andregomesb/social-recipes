@@ -20,6 +20,6 @@ feature 'User views recipes filtered by cuisine' do
     click_on cuisine.name
 
     expect(page).to have_css('h1', text: cuisine.name)
-    expect(page).to have_content "Nenhuma receita cadastrada"
+    expect(page).to have_content 'Nenhuma receita cadastrada'
   end
 end

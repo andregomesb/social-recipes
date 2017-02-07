@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 feature 'User edits recipes' do
-  scenario  'successfully' do
+  scenario 'successfully' do
     user = create(:user)
-    recipe = create(:recipe, user: user)
+    create(:recipe, user: user)
     log_in_user user
 
     visit root_path
@@ -45,18 +45,19 @@ feature 'User edits recipes' do
     click_on 'Editar'
     fill_in 'Nome', with: ''
     click_on 'Atualizar Receita'
-    expect(page).to have_content "Não foi possível atualizar a receita"
+    expect(page).to have_content 'Não foi possível atualizar a receita'
   end
 
   scenario 'can\'t edit others recipes' do
     user = create(:user)
     cuisine = create(:cuisine)
     meal = create(:meal)
-    recipe = create(:recipe, user: user, cuisine: cuisine, meal: meal)
+    create(:recipe, user: user, cuisine: cuisine, meal: meal)
     another_user = create(:user,
                           name: 'Joanne Doette',
                           email: 'joannedoette@example.com')
-    another_recipe = create(:recipe, user: another_user, cuisine: cuisine,meal: meal)
+    another_recipe = create(:recipe, user: another_user, cuisine: cuisine,
+                                     meal: meal)
     log_in_user user
 
     visit recipe_path another_recipe
@@ -68,11 +69,12 @@ feature 'User edits recipes' do
     user = create(:user)
     cuisine = create(:cuisine)
     meal = create(:meal)
-    recipe = create(:recipe, user: user, cuisine: cuisine, meal: meal)
+    create(:recipe, user: user, cuisine: cuisine, meal: meal)
     another_user = create(:user,
                           name: 'Joanne Doette',
                           email: 'joannedoette@example.com')
-    another_recipe = create(:recipe, user: another_user, cuisine: cuisine,meal: meal)
+    another_recipe = create(:recipe, user: another_user, cuisine: cuisine,
+                                     meal: meal)
     log_in_user user
 
     visit recipes_user_path another_recipe
@@ -89,7 +91,8 @@ feature 'User edits recipes' do
     another_user = create(:user,
                           name: 'Joanne Doette',
                           email: 'joannedoette@example.com')
-    another_recipe = create(:recipe, user: another_user, cuisine: cuisine,meal: meal)
+    another_recipe = create(:recipe, user: another_user, cuisine: cuisine,
+                                     meal: meal)
     log_in_user user
 
     visit recipes_user_path another_recipe

@@ -1,5 +1,4 @@
 module SessionsHelper
-
   def log_in(user)
     session[:user_id] = user.id
   end
@@ -17,7 +16,7 @@ module SessionsHelper
     @current_user = nil
   end
 
-  def authorize?(user=nil)
+  def authorize?(user = nil)
     user == current_user || admin?
   end
 
@@ -30,8 +29,7 @@ module SessionsHelper
   end
 
   def logged_as_admin
-    unless logged_in? && admin?
-      redirect_to root_path, alert: "Acesso Negado"
-    end
+    return if logged_in? && admin?
+    redirect_to root_path, alert: 'Acesso Negado'
   end
 end

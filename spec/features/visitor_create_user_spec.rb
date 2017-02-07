@@ -16,7 +16,7 @@ feature 'Visitor creates a user' do
 
     click_on 'Criar Usuário'
 
-    expect(page).to have_content I18n.t(:success, scope:[:users, :create])
+    expect(page).to have_content I18n.t(:success, scope: [:users, :create])
     expect(page).to have_content user.name
     expect(page).to have_content "Bem-vindo #{user.name}"
   end
@@ -26,6 +26,6 @@ feature 'Visitor creates a user' do
 
     click_on 'Criar Usuário'
 
-    expect(page).to have_content I18n.t(:error, scope:[:users, :create])
+    expect(page).to have_content I18n.t(:error, scope: [:users, :create])
   end
 end

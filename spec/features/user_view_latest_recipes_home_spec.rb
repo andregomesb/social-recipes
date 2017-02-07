@@ -5,11 +5,13 @@ feature 'User view latest recipes in home' do
     user = create(:user)
     cuisine = create(:cuisine)
     meal = create(:meal)
-    recipe_first = create(:recipe, name: "Recipe out", cuisine: cuisine, meal:meal, user: user)
-    20.times do |r|
-      create(:numbered_recipes, cuisine: cuisine, meal:meal, user: user)
+    recipe_first = create(:recipe, name: 'Recipe out', cuisine: cuisine,
+                                   meal: meal, user: user)
+    20.times do
+      create(:numbered_recipes, cuisine: cuisine, meal: meal, user: user)
     end
-    recipe_last = create(:recipe, name: "Recipe in", cuisine: cuisine, meal:meal, user: user)
+    recipe_last = create(:recipe, name: 'Recipe in', cuisine: cuisine,
+                                  meal: meal, user: user)
 
     visit root_path
 

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 feature 'User deletes recipes' do
-  scenario  'successfully' do
+  scenario 'successfully' do
     user = create(:user)
-    recipe = create(:recipe, user: user)
+    create(:recipe, user: user)
     log_in_user user
 
     visit root_path
@@ -34,11 +34,12 @@ feature 'User deletes recipes' do
     user = create(:user)
     cuisine = create(:cuisine)
     meal = create(:meal)
-    recipe = create(:recipe, user: user, cuisine: cuisine, meal: meal)
+    create(:recipe, user: user, cuisine: cuisine, meal: meal)
     another_user = create(:user,
                           name: 'Joanne Doette',
                           email: 'joannedoette@example.com')
-    another_recipe = create(:recipe, user: another_user, cuisine: cuisine,meal: meal)
+    another_recipe = create(:recipe, user: another_user, cuisine: cuisine,
+                                     meal: meal)
     log_in_user user
 
     visit recipe_path another_recipe

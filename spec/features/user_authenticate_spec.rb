@@ -12,7 +12,7 @@ feature 'User authenticates' do
     fill_in 'Senha', with: user.password
     click_button 'Entrar'
 
-    expect(page).to have_content "Logado com sucesso"
+    expect(page).to have_content 'Logado com sucesso'
     expect(page).to have_content "Bem-vindo #{user.name}"
   end
 
@@ -30,7 +30,7 @@ feature 'User authenticates' do
 
     visit user_path(another_user)
 
-    expect(page).not_to have_content "Logado com sucesso"
+    expect(page).not_to have_content 'Logado com sucesso'
     expect(page).not_to have_content "Bem-vindo #{user.name}"
     expect(page).not_to have_css('h1', text: user.name)
     expect(page).to have_content another_user.name

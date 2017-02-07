@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'User deletes account' do
-  scenario  'successfully' do
+  scenario 'successfully' do
     user = create(:user)
     log_in_user user
 

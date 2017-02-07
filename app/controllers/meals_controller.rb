@@ -1,7 +1,6 @@
 class MealsController < ApplicationController
-
-  before_action :logged_as_admin, only:[:new, :edit, :destroy]
-  before_action :set_meal, only:[:show, :edit, :update, :destroy]
+  before_action :logged_as_admin, only: [:new, :edit, :destroy]
+  before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
   def new
     @meal = Meal.new
@@ -11,18 +10,16 @@ class MealsController < ApplicationController
     @meal = Meal.new meal_params
 
     if @meal.save
-      redirect_to @meal, notice: t(".success")
+      redirect_to @meal, notice: t('.success')
     else
-      flash[:alert] = t(".error")
+      flash[:alert] = t('.error')
       render :new
     end
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @meal.update(meal_params)
