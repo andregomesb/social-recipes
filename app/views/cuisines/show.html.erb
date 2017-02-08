@@ -6,7 +6,10 @@
 <% end %>
 </h1>
 <div class="row">
-  <div class="col-md-10 col-md-offset-2">
-    <%= render(@cuisine.recipes) || t(".empty") %>
-  </div>
+<%= t(".empty") if @cuisine.recipes.empty? %>
+<% @cuisine.recipes.each do |recipe| %>
+    <div class="col-md-6">
+      <%= render partial: 'recipes/recipe', locals: { recipe: recipe } %>
+    </div>
+<% end %>
 </div>

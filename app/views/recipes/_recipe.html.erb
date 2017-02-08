@@ -1,19 +1,47 @@
-<div class="col-md-6">
-<h2> <%= link_to recipe.name, recipe %> </h2>
+<div id="content">
+<%= link_to recipe do %>
+  <div class="recipe">
+    <div class="image">
+        <%= image_tag recipe.recipe_image.url(:thumb)%>
+      <div class="name">
+        <h2><%= recipe.name %></h2>
+      </div>
+    </div>
+<% end %>
+      <div>
+        <ul class="media">
+          <li><i class="fa fa-clock-o"></i>
+            <%= recipe.preparation_time%> min.
+          </li>
+          <li><i class="fa fa-leaf"></i>
+            <%= t(recipe.difficulty,
+                  scope: [:activerecord, :attributes, :recipe, :difficulties]) %>
+          </li>
+          <li><i class="fa fa-group"></i>
+            <%= recipe.portion %>
+          </li>
 
-<p>
-  <strong><%=t(:meal_id, scope: [:activerecord, :attributes, :recipe])%>:</strong>
-  <%= recipe.meal.name%></p>
-<p>
-  <strong><%= t(:cuisine_id, scope: [:activerecord, :attributes, :recipe])%>:</strong>
-  <%= recipe.cuisine.name %></p>
-<p>
-  <strong><%=t(:difficulty, scope: [:activerecord, :attributes, :recipe])%>:</strong>
-  <%= t(recipe.difficulty , scope:[:activerecord,
-                                  :attributes,
-                                  :recipe,
-                                  :difficulties]) %>
-</p>
-
-<%= render partial: 'recipes/recipe_control', locals:{recipe: recipe} %>
+          <li><i class="fa fa-globe"></i> <%= recipe.cuisine.name %></li>
+          <li><i class="fa fa-cutlery"></i> <%= recipe.meal.name%></li>
+        </ul>
+      </div>
+  </div>
+  <div>
+    <%= render partial: 'recipes/recipe_control', locals:{recipe: recipe} %>
+  </div>
 </div>
+<script>
+  var heart = false;
+$('.lv').click(function(){
+  if(!heart){
+    $(this).addClass('fa-heart').removeClass('fa-heart-o');
+    heart = true;
+  }
+  else {
+    $(this).removeClass('fa-heart').addClass('fa-heart-o');
+    heart = false;
+  }
+});
+</script>
+
+

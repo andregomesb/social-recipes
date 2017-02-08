@@ -4,15 +4,10 @@ class RecipesController < ApplicationController
   before_action :set_collection, only: [:index, :new, :edit, :search]
 
   LATEST_RECIPES_HOME = 20
-  MOST_FAVORITES = 5
 
   def index
-    @recipes = Recipe.order(created_at: :desc).limit(LATEST_RECIPES_HOME)
-    @favorites = Recipe.joins(:favorite_recipes)
-                       .select('recipes.*, COUNT(recipe_id) as recipe_count')
-                       .group('recipes.id')
-                       .order('recipe_count DESC')
-                       .limit(MOST_FAVORITES)
+    @recipes = Recipe.latest_recipes(LATEST_RECIPES_HOME)
+    @favorites = Recipe.most_favorited
   end
 
   def new

@@ -45,11 +45,11 @@
 <div class="row">
   <div class="col-md-6">
     <h2><%=t(:ingredients, scope: [:activerecord, :attributes, :recipe])%></h2>
-    <p><%= @recipe.ingredients %></p>
+    <p><%= @recipe.ingredients.html_safe %></p>
   </div>
   <div class="col-md-6">
     <h2><%=t(:instructions, scope: [:activerecord, :attributes, :recipe])%></h2>
-    <p><%= @recipe.instructions %></p>
+    <p><%= @recipe.instructions.html_safe %></p>
   </div>
 </div>
 

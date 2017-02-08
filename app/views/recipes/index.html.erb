@@ -1,18 +1,12 @@
 <div class="row">
-
   <%= render 'aside' %>
-
   <div class="col-md-5 col-sm-12 latest-recipes">
     <h1>Últimas receitas</h1>
 
     <% @recipes.each do |recipe| %>
       <div class="row">
-        <div class="col-md-6 image-display">
-         <%= image_tag recipe.recipe_image.url(:thumb)%>
-        </div>
-
-        <div class="col-md-6">
-          <%= render recipe %>
+        <div class="col-md-12">
+          <%= render partial: 'recipe', locals: { recipe: recipe } %>
         </div>
       </div>
     <% end %>
@@ -20,17 +14,15 @@
   <% if @favorites %>
     <div class="col-md-4 col-sm-12">
       <h1>Receitas favoritas</h1>
-      <% @favorites.each do |favorite| %>
-        <div class="row">
-          <div class="col-md-6 image-display">
-           <%= image_tag favorite.recipe_image.url(:thumb)%>
-          </div>
-
-          <div class="col-md-6">
-            <%= render favorite %>
-          </div>
+      <% @favorites.each do |recipe| %>
+      <div class="row">
+        <div class="col-md-12">
+          <%= render partial: 'recipe', locals: { recipe: recipe } %>
         </div>
-      <% end %>
+      </div>
+    <% end %>
     </div>
   <% end %>
 </div>
+
+
