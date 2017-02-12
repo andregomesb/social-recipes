@@ -23,16 +23,16 @@ class CuisinesController < ApplicationController
 
   def update
     if @cuisine.update(cuisine_params)
-      redirect_to @cuisine, notice: 'Cozinha atualizada com sucesso'
+      redirect_to @cuisine, notice: t('.success')
     else
-      flash.now[:alert] = 'Não foi possível atualizar a cozinha'
+      flash.now[:alert] = t('.error')
       render :edit
     end
   end
 
   def destroy
     @cuisine.destroy
-    redirect_to root_path, notice: 'Cozinha deletada com sucesso'
+    redirect_to root_path, notice: t('.success')
   end
 
   private

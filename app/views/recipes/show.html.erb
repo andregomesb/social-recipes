@@ -12,14 +12,14 @@
       </h4>
       <div class="row">
         <div class="col-md-4 col-sm-6">
-          <p>Criado por <%= link_to @recipe.user.name, @recipe.user %></p>
+          <p><%= link_to t('.created_by', name: @recipe.user.name), @recipe.user %></p>
           <div class="recipe-item">
             <%= image_tag(@recipe.recipe_image.url(:large), class: "img-responsive" )%>
           </div>
           <ul class="media">
             <li><i class="fa fa-leaf"></i>
               <%= t(@recipe.difficulty,
-              scope: [:activerecord, :attributes, :recipe, :difficulties]) %>
+              scope: 'activerecord.attributes.recipe.difficulties') %>
             </li>
             <li><i class="fa fa-group"></i>
               <%= @recipe.portion %>
@@ -42,7 +42,7 @@
         </div>
         <div class="col-md-3 col-sm-6">
           <div class="recipe-item">
-            <h5><%=t(:ingredients, scope: [:activerecord, :attributes, :recipe])%> :-</h5>
+            <h5><%=t(:ingredients, scope: 'activerecord.attributes.recipe')%> :-</h5>
             <ul class="list-unstyled">
               <% @recipe.ingredients_items.each do |item, quantity| %>
               <li>
@@ -57,7 +57,7 @@
           <!-- Recipe Items -->
           <div class="recipe-item">
             <!-- Heading -->
-            <h5>Modo de Preparo (<%= @recipe.preparation_time %>min):-</h5>
+            <h5><%= t('.instructions', time: @recipe.preparation_time) %>:-</h5>
             <!-- Recipe Description -->
             <div class="recipe-description">
               <!-- Paragraph -->

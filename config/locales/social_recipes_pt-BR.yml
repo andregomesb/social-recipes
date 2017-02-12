@@ -6,44 +6,131 @@ pt-BR:
     select_meal: 'Selecione um tipo de comida'
     select_meals_example: 'Ex: Café da manhã, Acompanhamento, Prato Principal...'
     select_difficulty: 'Seleciona a dificuldade'
+  button:
+    edit: 'Editar'
+    delete: 'Deletar'
   search: 'Procurar'
   share_recipe_email: 'Compartilhar'
   results:
     zero: 'Nenhum resultado encontrado'
     one: '%{count} resultado encontrado'
     other: '%{count} resultados encontrados'
+  application:
+    navbar:
+      telephone: '999-999-9999'
+      create_cuisine: 'Cadastrar Cozinha'
+      create_meal: 'Cadastrar Tipo de Comida'
+      create_recipe: 'Cadastrar Receita'
+      my_recipes: 'Minhas Receitas'
+      settings: 'Configurações'
+      exit: 'Sair'
+      login: 'Entrar'
+      signup: 'Inscreva-se'
+      cuisines: 'Cozinhas'
+      meals: 'Tipos'
+    footer:
+      join_us: 'Junte-se a nós'
+      contact: 'Entre em contato'
   recipes:
+    index:
+      latest_recipes_title: 'Últimas Receitas'
+      favorite_recipes_title: 'Receitas Favoritas'
+    new:
+      title: 'Criar nova receita'
     create:
       success: 'Receita cadastrada com sucesso'
       error: 'Não foi possível cadastrar a receita'
+    edit:
+      title: 'Edit %{name}'
+    update:
+      success: 'Receita atualizada com sucesso'
+      error: 'Não foi possível atualizar a receita'
     show:
-      created_by: 'Criado por'
-
+      created_by: 'Criado por %{name}'
+      instructions: 'Modo de Preparo (%{time}min)'
+    destroy:
+      success: 'Receita deletada com sucesso'
+    search:
+      search_query: 'Pesquisa:'
+    favorite:
+      favorite: 'Favoritado'
+      unfavorite: 'Desfavoritado'
+    share:
+      success: 'Email enviado'
+      error: 'Ocorreu um erro, não foi possível enviar o email'
+    recipe:
+      recipe_created_by: 'Receita criada por'
+      read_more: 'Ver mais'
+    form:
+      example_by_line: 'Escreva cada ingrediente por linha.'
+      example_by_line_html: 'Escreva cada ingrediente por <em>linha</em>.'
+      example_ingredient_quantity: 'Separe o ingrediente e a quantidade por virgula. Ex: Carne, 200g'
+      example_ingredient_quantity_html: 'Separe o ingrediente e a quantidade por <em>virgula</em>. Ex: <em>Carne, 200g</em>'
+      example_instructions: 'Separe as instruções em parágrafos'
+      example_instructions_html: 'Separe as instruções em <em>parágrafos</em>'
   cuisines:
+    new:
+      title: 'Cadastrar cozinha'
     create:
       success: 'Cozinha cadastrada com sucesso'
       error: 'Não foi possível cadastrar a cozinha'
+    edit:
+      title: 'Editar %{cuisine}'
+    update:
+      success: 'Cozinha atualizada com sucesso'
+      error: 'Não foi possível atualizar a cozinha'
     show:
       empty: 'Nenhuma receita cadastrada'
+    destroy:
+      success: 'Cozinha deletada com sucesso'
   meals:
+    new:
+      title: 'Cadastrar tipo de comida'
     create:
       success: 'Tipo de Comida cadastrada com sucesso'
       error: 'Não foi possível cadastrar o tipo de comida'
+    edit:
+      title: 'Editar %{meal}'
+    update:
+      success: 'Tipo de Comida atualizada com sucesso'
+      error: 'Não foi possível atualizar o tipo de comida'
     show:
       empty: 'Nenhuma receita cadastrada'
+    destroy:
+      success: 'Tipo de Cozinha deletada com sucesso'
   users:
+    new:
+      title: 'Criar conta'
     create:
       success: 'Usuário cadastrado com sucesso'
       error: 'Não foi possível cadastrar o usuário'
+    edit:
+      title: 'Configurações de %{name}'
     update:
       success: 'Usuário atualizado com sucesso'
       error: 'Não foi possível atualizar o usuário'
     show:
+      welcome: 'Bem-vindo %{name}'
+      recipes_title: 'Receitas de %{name}'
+      favorites_title: 'Favoritos de %{name}'
       empty: 'Nenhuma receita cadastrada'
+    destroy:
+      success: 'Usuário deletado com sucesso'
+    show_recipes:
+      my_recipes: 'Minhas Receitas'
+      access_denied: 'Acesso Negado'
+    form:
+      delete_user: "Deletar Conta"
   sessions:
     new:
+      login: 'Entrar'
       email: 'Usuário'
       password: 'Senha'
+    create:
+      success: 'Logado com sucesso'
+      error: 'Usuário ou senha inválido'
+    destroy:
+      success: 'Logout com sucesso'
   activerecord:
     models:
       recipe:

@@ -8,7 +8,7 @@
           <div class="logo">
             <%= image_tag("logo.png", class: "img-responsive" )%>
             <!-- Heading -->
-            <h1>CakeFactory</h1>
+            <h1><%= t('app_title') %></h1>
           </div>
           <!-- Paragraph -->
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et magna aliqua.</p>
@@ -21,9 +21,9 @@
         <!-- Footer widget -->
         <div class="footer-widget">
           <!-- Heading -->
-          <h4>Join Us Today</h4>
+          <h4><%= t('.join_us') %></h4>
           <!-- Paragraph -->
-          <p>There is no one who loves pain itself, who seeks after it and wants to have it.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod .</p>
           <!-- Subscribe form -->
           <form role="form">
             <div class="form-group">
@@ -40,7 +40,7 @@
         <!-- Footer widget -->
         <div class="footer-widget">
           <!-- Heading -->
-          <h4>Contact Us</h4>
+          <h4><%= t('.contact') %></h4>
           <div class="contact-details">
             <!-- Address / Icon -->
             <i class="fa fa-map-marker br-red"></i> <span>#768, 5th floor, N S Building,<br />Csm Block, Park Road,<br /> Bangalore - 234567</span>
@@ -65,7 +65,7 @@
     <!-- Copyright -->
     <div class="footer-copyright">
       <!-- Paragraph -->
-      <p>&copy; Copyright 2014 <a href="#">Company Name</a></p>
+      <p>&copy; Copyright 2017 <%=link_to t('app_title'), root_path %></p>
     </div>
   </div>
 </div>

@@ -35,12 +35,12 @@ class UsersController < ApplicationController
 
   def show_recipes
     return if authorize? @user
-    redirect_to root_path, alert: 'Acesso Negado'
+    redirect_to root_path, alert: t('.access_denied')
   end
 
   def destroy
     @user.destroy
-    redirect_to root_path, notice: 'Usuário deletado com sucesso'
+    redirect_to root_path, notice: t('.success')
   end
 
   private

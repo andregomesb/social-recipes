@@ -23,16 +23,16 @@ class MealsController < ApplicationController
 
   def update
     if @meal.update(meal_params)
-      redirect_to @meal, notice: 'Tipo de Comida atualizada com sucesso'
+      redirect_to @meal, notice: t('.success')
     else
-      flash.now[:alert] = 'Não foi possível atualizar o tipo de comida'
+      flash.now[:alert] = t('.error')
       render :edit
     end
   end
 
   def destroy
     @meal.destroy
-    redirect_to root_path, notice: 'Tipo de Cozinha deletada com sucesso'
+    redirect_to root_path, notice: t('.success')
   end
 
   private

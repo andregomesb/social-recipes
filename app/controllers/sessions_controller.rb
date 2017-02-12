@@ -5,16 +5,16 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: session_email)
     if @user && @user.authenticate(session_password)
       log_in @user
-      redirect_to @user, notice: 'Logado com sucesso'
+      redirect_to @user, notice: t('.success')
     else
-      flash[:alert] = 'Usuário ou senha inválido'
+      flash[:alert] = t('.error')
       render :new
     end
   end
 
   def destroy
     log_out
-    redirect_to root_path, notice: 'Logout com sucesso'
+    redirect_to root_path, notice: t('.success')
   end
 
   private

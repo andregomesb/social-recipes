@@ -46,15 +46,15 @@
       <%= f.label :ingredients %>
       <%= render partial: 'form_notification', locals: {object: @recipe, field: :name} %>
       <%= f.text_area :ingredients, class: "form-control", rows: 5 %>
-      <p class="help-block">Escreva cada ingrediente por <em>linha</em>.</p>
-      <p  class="help-block"> Separe o ingrediente e a quantidade por <em>virgula</em>. Ex: <em>Carne, 200g</em></p>
+      <p class="help-block"><%= t('.example_by_line_html') %></p>
+      <p  class="help-block"><%= t('.example_ingredient_quantity_html') %></p>
     </fieldset>
 
     <fieldset class="form-group">
       <%= f.label :instructions %>
       <%= render partial: 'form_notification', locals: {object: @recipe, field: :name} %>
       <%= f.text_area :instructions, class: "form-control", rows: 7 %>
-      <p class="help-block">Separe as instruções em <em>parágrafos</em></p>
+      <p class="help-block"><%= t('.example_instructions_html') %></p>
     </fieldset>
 
     <%= f.submit class: "btn btn-primary"%>

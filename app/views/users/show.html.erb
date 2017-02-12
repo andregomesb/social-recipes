@@ -5,7 +5,7 @@
         <div class="chefs-member">
           <h1>
             <% if current_user == @user %>
-            <%= "Bem-vindo #{current_user.name}" %>
+            <%= t('.welcome', name: current_user.name) %>
             <% else %>
             <%= @user.name %>
             <% end %>
@@ -45,7 +45,7 @@
       <!-- Crown image -->
       <%= image_tag("crown.png", class: "img-responsive" )%>
       <!-- Heading -->
-      <h2>Receitas de <%= @user.name%></h2>
+      <h2><%= t('.recipes_title', name: @user.name) %></h2>
       <!-- Border -->
       <div class="border"></div>
     </div>
@@ -57,7 +57,7 @@
       <!-- Crown image -->
       <%= image_tag("crown.png", class: "img-responsive" )%>
       <!-- Heading -->
-      <h2>Favoritos de <%= @user.name%></h2>
+      <h2><%= t('.favorites_title', name: @user.name) %></h2>
       <!-- Border -->
       <div class="border"></div>
     </div>

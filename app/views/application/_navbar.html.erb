@@ -5,7 +5,7 @@
         <div class="col-md-2 col-sm-4">
           <!-- phone icon -->
           <div class="header-contact">
-            <span><i class="fa fa-phone red"></i> 999-999-9999</span>
+            <span><i class="fa fa-phone red"></i> <%= t('.telephone') %></span>
           </div>
         </div>
         <div class="col-md-4 col-sm-4">
@@ -16,16 +16,16 @@
           <ul class="nav navbar-nav navbar-right">
             <% if logged_in? %>
               <% if admin? %>
-                <li><%= link_to 'Cadastrar Cozinha', new_cuisine_path %></li>
-                <li><%= link_to 'Cadastrar Tipo de Comida', new_meal_path %></li>
+                <li><%= link_to t('.create_cuisine'), new_cuisine_path %></li>
+                <li><%= link_to t('.create_meal'), new_meal_path %></li>
               <% end %>
-              <li><%= link_to 'Cadastrar Receita', new_recipe_path %></li>
-              <li><%= link_to 'Minhas Receitas', recipes_user_path(current_user) %></li>
-              <li><%= link_to 'Configurações', edit_user_path(current_user) %></li>
-              <li><%= link_to 'Sair', logout_path, method: :delete %></li>
+              <li><%= link_to t('.create_recipe'), new_recipe_path %></li>
+              <li><%= link_to t('.my_recipes'), recipes_user_path(current_user) %></li>
+              <li><%= link_to t('.settings'), edit_user_path(current_user) %></li>
+              <li><%= link_to t('.exit'), logout_path, method: :delete %></li>
             <% else %>
-              <li><%= link_to 'Entrar', login_path %></li>
-              <li><%= link_to 'Inscreva-se', signup_path %></li>
+              <li><%= link_to t('.login'), login_path %></li>
+              <li><%= link_to t('.signup'), signup_path %></li>
             <% end %>
           </ul>
           <div class="clearfix"></div>
@@ -72,7 +72,7 @@
                 <li class="dropdown">
                   <%= link_to '#', class: 'dropdown-toggle', data:{toggle: 'dropdown'} do %>
                   <%= image_tag("nav-menu/nav4.jpg", class: "img-responsive" )%>
-                  Cozinhas<b class="caret"></b>
+                  <%=t('.cuisines')%><b class="caret"></b>
                   <% end %>
                   <ul class="dropdown-menu">
                     <% cuisine_menu.each do |cuisine_item| %>
@@ -83,7 +83,7 @@
                 <li class="dropdown">
                   <%= link_to '#', class: 'dropdown-toggle', data:{toggle: 'dropdown'} do %>
                   <%= image_tag("nav-menu/nav2.jpg", class: "img-responsive" )%>
-                  Tipos<b class="caret"></b>
+                  <%=t('.meals')%><b class="caret"></b>
                   <% end %>
                   <ul class="dropdown-menu">
                     <% meal_menu.each do |meal_item| %>

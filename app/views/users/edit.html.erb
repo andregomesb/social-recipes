@@ -1,4 +1,4 @@
 <div class="text-center">
-  <h1>Configurações de <%= @user.name%></h1>
+  <h1><%= t('.title', name: @user.name)%></h1>
 </div>
 <%= render 'form' %>

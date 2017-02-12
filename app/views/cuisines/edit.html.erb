@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h1>Editar <%= @cuisine.name %> </h1>
+  <h1> <%= t('.title', cuisine: @cuisine.name) %> </h1>
 </div>
 <div class="container">
   <%= render 'form' %>

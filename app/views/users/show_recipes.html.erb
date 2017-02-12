@@ -1,7 +1,9 @@
 <div class="dishes padd">
   <div class="container">
     <div class="row">
-      <h1>Minhas Receitas</h1>
+      <div class="text-center">
+        <h1><%= t('.my_recipes') %></h1>
+      </div>
       <%= t("users.show.empty") if @user.recipes.empty? %>
       <% @user.recipes.each do |recipe| %>
       <%= render partial: 'recipes/recipe', locals: { recipe: recipe, crud_buttons: true } %>

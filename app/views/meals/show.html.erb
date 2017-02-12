@@ -3,8 +3,8 @@
   <%= @meal.name %>
   <% if logged_in? && authorize?(current_user) %>
     <p>
-    <%= link_to 'Editar', edit_meal_path(@meal), class:"btn btn-warning btn-xs" %>
-    <%= link_to 'Deletar', meal_path(@meal), method: :delete, class:"btn btn-danger btn-xs" %>
+    <%= link_to t('button.edit'), edit_meal_path(@meal), class:"btn btn-warning btn-xs" %>
+    <%= link_to t('button.delete'), meal_path(@meal), method: :delete, class:"btn btn-danger btn-xs" %>
     </p>
   <% end %>
 </h1>

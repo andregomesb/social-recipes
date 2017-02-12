@@ -13,7 +13,7 @@
       <!-- Heading -->
       <h3><%= link_to recipe.name, recipe %></h3>
       <!-- Paragraph -->
-      <p>Receita criada por <%= link_to recipe.user.name, recipe.user %>.</p>
+      <p><%= t('.recipe_created_by') %> <%= link_to recipe.user.name, recipe.user %>.</p>
       <ul class="media">
         <li><i class="fa fa-clock-o"></i>
           <%= recipe.preparation_time%> min.
@@ -29,12 +29,12 @@
         <p><li><i class="fa fa-cutlery"></i> <%= recipe.meal.name%></li></p>
       </ul>
       <!-- Button -->
-      <%= link_to 'Read more', recipe, class: 'btn btn-danger btn-sm' %>
+      <%= link_to t('.read_more'), recipe, class: 'btn btn-danger btn-sm' %>
 
       <% if defined?(crud_buttons) && crud_buttons %>
       <p>
-        <%= link_to 'Editar', edit_recipe_path(recipe), class:"btn btn-warning btn-xs" %>
-        <%= link_to 'Deletar', recipe_path(recipe), method: :delete, class:"btn btn-danger btn-xs" %>
+        <%= link_to t('button.edit'), edit_recipe_path(recipe), class:"btn btn-warning btn-xs" %>
+        <%= link_to t('button.delete'), recipe_path(recipe), method: :delete, class:"btn btn-danger btn-xs" %>
       </p>
       <% end %>
     </div>

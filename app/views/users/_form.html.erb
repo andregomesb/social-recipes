@@ -44,7 +44,7 @@
 
     <%= f.submit class: "btn btn-primary" %>
     <% if current_user && authorize?(@user) %>
-    <%= link_to 'Deletar Conta', user_path(@user), method: :delete, class: 'btn btn-danger' %>
+    <%= link_to t(".delete_user"), user_path(@user), method: :delete, class: 'btn btn-danger' %>
     <% end %>
     <% end %>
   </div>

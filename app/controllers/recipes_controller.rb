@@ -32,10 +32,10 @@ class RecipesController < ApplicationController
 
   def update
     if @recipe.update(recipe_params)
-      redirect_to @recipe, notice: 'Receita atualizada com sucesso'
+      redirect_to @recipe, notice: t('.success')
     else
       set_collection
-      flash.now[:alert] = 'Não foi possível atualizar a receita'
+      flash.now[:alert] = t('.error')
       render :edit
     end
   end
@@ -44,7 +44,7 @@ class RecipesController < ApplicationController
     @recipe.destroy
     # redirect_back(fallback_location: root_path)
     redirect_to recipes_user_path(@recipe.user),
-                notice: 'Receita deletada com sucesso'
+                notice: t('.success')
   end
 
   def search
@@ -57,10 +57,10 @@ class RecipesController < ApplicationController
     favorite = params[:favorite] == 'true'
     if favorite
       current_user.favorites << @recipe
-      flash[:notice] = 'Favoritado'
+      flash[:notice] = t('.favorite')
     else
       current_user.favorites.delete(@recipe)
-      flash[:notice] = 'Desfavoritado'
+      flash[:notice] = t('.unfavorite')
     end
     redirect_to @recipe
   end
@@ -69,9 +69,9 @@ class RecipesController < ApplicationController
     mail_to = params[:share_recipe_email]
     if mail_to.present?
       RecipeMailer.share_email(current_user, @recipe, mail_to).deliver
-      flash.now[:notice] = 'Email enviado'
+      flash.now[:notice] = t('.success')
     else
-      flash.now[:alert] = 'Ocorreu um erro, não foi possível enviar o email'
+      flash.now[:alert] = t('.error')
     end
 
     render :show
