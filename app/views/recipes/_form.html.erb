@@ -1,6 +1,6 @@
 <div class="row">
-<div class="col-md-8 col-md-offset-2 col-sm-12">
-  <%= form_for @recipe, html: {multipart: true} do |f| %>
+  <div class="col-md-8 col-md-offset-2 col-sm-12">
+    <%= form_for @recipe, html: {multipart: true} do |f| %>
     <fieldset class="form-group">
       <%= f.label :name %>
       <%= render partial: 'form_notification', locals: {object: @recipe, field: :name} %>
@@ -9,52 +9,55 @@
 
     <fieldset class="form-group">
       <%= f.label :cuisine_id %>
-      <%= render partial: 'form_notification', locals: {object: @recipe, field: :name} %>
+      <%= render partial: 'form_notification', locals: {object: @recipe, field: :cuisine} %>
       <%= f.collection_select(:cuisine_id, @cuisines, :id, :name, { prompt: t(:select_cuisine, scope:[:select_prompt]) }, class: "form-control")%>
     </fieldset>
 
     <fieldset class="form-group">
       <%= f.label :meal_id %>
-      <%= render partial: 'form_notification', locals: {object: @recipe, field: :name} %>
+      <%= render partial: 'form_notification', locals: {object: @recipe, field: :meal} %>
       <%= f.collection_select(:meal_id, @meals, :id, :name, { prompt: t(:select_meal, scope:[:select_prompt]) }, class: "form-control")%>
     </fieldset>
 
     <fieldset class="form-group">
       <%= f.label :portion %>
-      <%= f.number_field :portion, value: 1, min: 1, set: 1, class: "form-control" %>
+      <%= render partial: 'form_notification', locals: {object: @recipe, field: :portion} %>
+      <%= f.number_field :portion, value: f.object.portion, min: 1, set: 1, class: "form-control" %>
     </fieldset>
 
     <fieldset class="form-group">
       <%= f.label :preparation_time %>
-      <%= f.number_field :preparation_time, value: 1, min: 1, set: 1, class: "form-control" %>
+      <%= render partial: 'form_notification', locals: {object: @recipe, field: :preparation_time} %>
+      <%= f.number_field :preparation_time, value: f.object.preparation_time, min: 1, set: 1, class: "form-control" %>
     </fieldset>
 
     <fieldset class="form-group">
       <%= f.label :difficulty%>
-      <%= render partial: 'form_notification', locals: {object: @recipe, field: :name} %>
-      <%= f.select :difficulty, options_for_select(@difficulties), { prompt: t(:select_difficulty, scope:[:select_prompt]) }, class: "form-control" %>
+      <%= render partial: 'form_notification', locals: {object: @recipe, field: :difficulty} %>
+      <%= f.select :difficulty, options_for_select(@difficulties, f.object.difficulty), { prompt: t(:select_difficulty, scope:[:select_prompt])}, class: "form-control" %>
     </fieldset>
 
     <fieldset class="form-group">
       <%= f.label :recipe_image %>
-      <%= f.file_field :recipe_image, class: "form-control" %>
+      <%= f.file_field :recipe_image %>
     </fieldset>
 
     <fieldset class="form-group">
       <%= f.label :ingredients %>
       <%= render partial: 'form_notification', locals: {object: @recipe, field: :name} %>
       <%= f.text_area :ingredients, class: "form-control", rows: 5 %>
-      <p class="help-block">Here goes some suggestion about the formatting</p>
+      <p class="help-block">Escreva cada ingrediente por <em>linha</em>.</p>
+      <p  class="help-block"> Separe o ingrediente e a quantidade por <em>virgula</em>. Ex: <em>Carne, 200g</em></p>
     </fieldset>
 
     <fieldset class="form-group">
       <%= f.label :instructions %>
       <%= render partial: 'form_notification', locals: {object: @recipe, field: :name} %>
       <%= f.text_area :instructions, class: "form-control", rows: 7 %>
-      <p class="help-block">Here goes some suggestion about the formatting</p>
+      <p class="help-block">Separe as instruções em <em>parágrafos</em></p>
     </fieldset>
 
     <%= f.submit class: "btn btn-primary"%>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 </div>

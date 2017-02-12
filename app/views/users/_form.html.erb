@@ -2,50 +2,50 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
 
-      <fieldset class="form-group">
-        <%= f.label :name %>
-        <%= render partial: 'form_notification', locals: {object: @user, field: :name} %>
-        <%= f.text_field :name, class: 'form-control'  %>
-      </fieldset>
+    <fieldset class="form-group">
+      <%= f.label :name %>
+      <%= render partial: 'form_notification', locals: {object: @user, field: :name} %>
+      <%= f.text_field :name, class: 'form-control'  %>
+    </fieldset>
 
-      <fieldset class="form-group">
-        <%= f.label :email %>
-        <%= render partial: 'form_notification', locals: {object: @user, field: :name} %>
-        <%= f.email_field :email, class: 'form-control'  %>
-      </fieldset>
+    <fieldset class="form-group">
+      <%= f.label :email %>
+      <%= render partial: 'form_notification', locals: {object: @user, field: :name} %>
+      <%= f.email_field :email, class: 'form-control'  %>
+    </fieldset>
 
-      <fieldset class="form-group">
-        <%= f.label :password %>
-        <%= render partial: 'form_notification', locals: {object: @user, field: :name} %>
-        <%= f.password_field :password, class: 'form-control'  %>
-      </fieldset>
+    <fieldset class="form-group">
+      <%= f.label :password %>
+      <%= render partial: 'form_notification', locals: {object: @user, field: :name} %>
+      <%= f.password_field :password, class: 'form-control'  %>
+    </fieldset>
 
-      <fieldset class="form-group">
-        <%= f.label :password_confirmation%>
-        <%= render partial: 'form_notification', locals: {object: @user, field: :name} %>
-        <%= f.password_field :password_confirmation, class: 'form-control'  %>
-      </fieldset>
+    <fieldset class="form-group">
+      <%= f.label :password_confirmation%>
+      <%= render partial: 'form_notification', locals: {object: @user, field: :name} %>
+      <%= f.password_field :password_confirmation, class: 'form-control'  %>
+    </fieldset>
 
-      <fieldset class="form-group">
-        <%= f.label :city %>
-        <%= render partial: 'form_notification', locals: {object: @user, field: :name} %>
-        <%= f.text_field :city, class: 'form-control'  %>
-      </fieldset>
+    <fieldset class="form-group">
+      <%= f.label :city %>
+      <%= render partial: 'form_notification', locals: {object: @user, field: :name} %>
+      <%= f.text_field :city, class: 'form-control'  %>
+    </fieldset>
 
-      <fieldset class="form-group">
-        <%= f.label :facebook, "Facebook" %>
-        <%= f.text_field :facebook, class: 'form-control'  %>
-      </fieldset>
+    <fieldset class="form-group">
+      <%= f.label :facebook, "Facebook" %>
+      <%= f.text_field :facebook, class: 'form-control'  %>
+    </fieldset>
 
-      <fieldset class="form-group">
-        <%= f.label :twitter, "Twitter" %>
-        <%= f.text_field :twitter, class: 'form-control'  %>
-      </fieldset>
+    <fieldset class="form-group">
+      <%= f.label :twitter, "Twitter" %>
+      <%= f.text_field :twitter, class: 'form-control'  %>
+    </fieldset>
 
-      <%= f.submit class: "btn btn-primary" %>
-      <% if current_user && authorize?(@user) %>
-        <%= link_to 'Deletar Conta', user_path(@user), method: :delete, class: 'btn btn-danger' %>
-      <% end %>
+    <%= f.submit class: "btn btn-primary" %>
+    <% if current_user && authorize?(@user) %>
+    <%= link_to 'Deletar Conta', user_path(@user), method: :delete, class: 'btn btn-danger' %>
+    <% end %>
     <% end %>
   </div>
 </div>

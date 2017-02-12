@@ -1,15 +1,21 @@
+<div class="text-center">
 <h1>
   <%= @meal.name %>
   <% if logged_in? && authorize?(current_user) %>
-    <%= link_to 'Editar', edit_meal_path(@meal), class: "btn btn-warning" %>
-    <%= link_to 'Deletar', meal_path(@meal), method: :delete, class: "btn btn-danger" %>
+    <p>
+    <%= link_to 'Editar', edit_meal_path(@meal), class:"btn btn-warning btn-xs" %>
+    <%= link_to 'Deletar', meal_path(@meal), method: :delete, class:"btn btn-danger btn-xs" %>
+    </p>
   <% end %>
 </h1>
-<div class="row">
-<%= t(".empty") if @meal.recipes.empty? %>
-<% @meal.recipes.each do |recipe| %>
-    <div class="col-md-6">
-      <%= render partial: 'recipes/recipe', locals: { recipe: recipe } %>
+</div>
+<div class="dishes padd">
+  <div class="container">
+    <div class="row">
+      <%= t(".empty") if @meal.recipes.empty? %>
+      <% @meal.recipes.each do |recipe| %>
+        <%= render partial: 'recipes/recipe', locals: { recipe: recipe } %>
+      <% end %>
     </div>
-<% end %>
+  </div>
 </div>

@@ -1,47 +1,42 @@
-<div id="content">
-<%= link_to recipe do %>
-  <div class="recipe">
-    <div class="image">
-        <%= image_tag recipe.recipe_image.url(:thumb)%>
-      <div class="name">
-        <h2><%= recipe.name %></h2>
-      </div>
+<div class="col-md-3 col-sm-6">
+  <div class="dishes-item-container">
+    <!-- Image Frame -->
+    <div class="img-frame">
+      <!-- Image -->
+      <%= link_to recipe do %>
+      <%= image_tag(recipe.recipe_image.url(:medium), class: "img-responsive")%>
+      <!-- Block for on hover effect to image -->
+      <% end %>
     </div>
-<% end %>
-      <div>
-        <ul class="media">
-          <li><i class="fa fa-clock-o"></i>
-            <%= recipe.preparation_time%> min.
-          </li>
-          <li><i class="fa fa-leaf"></i>
-            <%= t(recipe.difficulty,
-                  scope: [:activerecord, :attributes, :recipe, :difficulties]) %>
-          </li>
-          <li><i class="fa fa-group"></i>
-            <%= recipe.portion %>
-          </li>
+    <!-- Dish Details -->
+    <div class="dish-details">
+      <!-- Heading -->
+      <h3><%= link_to recipe.name, recipe %></h3>
+      <!-- Paragraph -->
+      <p>Receita criada por <%= link_to recipe.user.name, recipe.user %>.</p>
+      <ul class="media">
+        <li><i class="fa fa-clock-o"></i>
+          <%= recipe.preparation_time%> min.
+        </li>
+        <li><i class="fa fa-leaf"></i>
+          <%= t(recipe.difficulty,
+          scope: [:activerecord, :attributes, :recipe, :difficulties]) %>
+        </li>
+        <li><i class="fa fa-group"></i>
+          <%= recipe.portion %>
+        </li>
+        <p><li><i class="fa fa-globe"></i> <%= recipe.cuisine.name %></li></p>
+        <p><li><i class="fa fa-cutlery"></i> <%= recipe.meal.name%></li></p>
+      </ul>
+      <!-- Button -->
+      <%= link_to 'Read more', recipe, class: 'btn btn-danger btn-sm' %>
 
-          <li><i class="fa fa-globe"></i> <%= recipe.cuisine.name %></li>
-          <li><i class="fa fa-cutlery"></i> <%= recipe.meal.name%></li>
-        </ul>
-      </div>
-  </div>
-  <div>
-    <%= render partial: 'recipes/recipe_control', locals:{recipe: recipe} %>
+      <% if defined?(crud_buttons) && crud_buttons %>
+      <p>
+        <%= link_to 'Editar', edit_recipe_path(recipe), class:"btn btn-warning btn-xs" %>
+        <%= link_to 'Deletar', recipe_path(recipe), method: :delete, class:"btn btn-danger btn-xs" %>
+      </p>
+      <% end %>
+    </div>
   </div>
 </div>
-<script>
-  var heart = false;
-$('.lv').click(function(){
-  if(!heart){
-    $(this).addClass('fa-heart').removeClass('fa-heart-o');
-    heart = true;
-  }
-  else {
-    $(this).removeClass('fa-heart').addClass('fa-heart-o');
-    heart = false;
-  }
-});
-</script>
-
-

@@ -1,79 +1,71 @@
-<div class="row">
-<div class="col-md-6">
-  <h1>
-    <%= @recipe.name %>
-    <%= render partial: 'recipes/recipe_control', locals:{recipe: @recipe} %>
-  </h1>
-  <br>
-  <dl class="dl-horizontal">
-    <p>
-      <dt><%=t(:created_by, scope: [:recipes, :show])%></dt>
-      <dd><%= link_to @recipe.user.name, @recipe.user %></dd>
-    </p>
-    <p>
-      <dt><%=t(:cuisine_id, scope: [:activerecord, :attributes, :recipe])%></dt>
-      <dd><%= @recipe.cuisine.name %></dd>
-    </p>
-    <p>
-      <dt><%=t(:meal_id, scope: [:activerecord, :attributes, :recipe])%></dt>
-      <dd><%= @recipe.meal.name %></dd>
-    </p>
-    <p>
-      <dt><%=t(:portion, scope: [:activerecord, :attributes, :recipe])%></dt>
-      <dd><%= @recipe.portion %></dd>
-    </p>
-    <p>
-      <dt><%=t(:preparation_time, scope: [:activerecord, :attributes, :recipe])%></dt>
-      <dd><%= @recipe.preparation_time %></dd>
-    </p>
-    <p>
-      <dt><%=t(:difficulty, scope: [:activerecord, :attributes, :recipe])%></dt>
-      <dd><%= t(@recipe.difficulty, scope: [:activerecord, :attributes, :recipe, :difficulties]) %></dd>
-    </p>
-    <p>
-      <dt><%=t(:favorited_by, scope: [:activerecord, :attributes, :recipe])%></dt>
-      <dd><%= @recipe.favorited_by.size %></dd>
-    </p>
-  </dl>
-</div>
-
-  <div class="col-md-6">
-    <%= image_tag @recipe.recipe_image.url(:medium) %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-6">
-    <h2><%=t(:ingredients, scope: [:activerecord, :attributes, :recipe])%></h2>
-    <p><%= @recipe.ingredients.html_safe %></p>
-  </div>
-  <div class="col-md-6">
-    <h2><%=t(:instructions, scope: [:activerecord, :attributes, :recipe])%></h2>
-    <p><%= @recipe.instructions.html_safe %></p>
-  </div>
-</div>
-
-
-<%if logged_in? %>
-<hr>
-<div class="row">
-<div class="col-md-5 col-md-offset-1">
-  <%= link_to favorite_recipe_path(@recipe, favorite: !favorited?), method: :put, id:'favorite' do %>
-    <%= content_tag(:i, nil, class:"glyphicon glyphicon-star") if favorited? %>
-    <%= content_tag(:i, nil, class:"glyphicon glyphicon-star-empty") unless favorited? %>
-  <% end %>
-</div>
-
-<div class="col-md-6 ">
-  <%= form_tag share_recipe_path, method: :post, class:"navbar-form navbar-left" do %>
-    <div class="form-group">
-    <%= text_field_tag(:share_recipe_email, nil, placeholder:'Email', class:"form-control") %>
-    <%= submit_tag(t(:share_recipe_email), name: nil, class:"btn btn-default") %>
+<div class="inner-page padd">
+  <div class="recipe">
+    <div class="container">
+      <h4>
+        <%= @recipe.name %>
+        <% if logged_in? %>
+        <%= link_to favorite_recipe_path(@recipe, favorite: !favorited?), method: :put, id:'favorite' do %>
+        <%= content_tag(:i, nil, class:"glyphicon glyphicon-star recipe-favorited-icon") if favorited? %>
+        <%= content_tag(:i, nil, class:"glyphicon glyphicon-star-empty recipe-favorited-empty-icon") unless favorited? %>
+        <% end %>
+        <% end %>
+      </h4>
+      <div class="row">
+        <div class="col-md-4 col-sm-6">
+          <p>Criado por <%= link_to @recipe.user.name, @recipe.user %></p>
+          <div class="recipe-item">
+            <%= image_tag(@recipe.recipe_image.url(:large), class: "img-responsive" )%>
+          </div>
+          <ul class="media">
+            <li><i class="fa fa-leaf"></i>
+              <%= t(@recipe.difficulty,
+              scope: [:activerecord, :attributes, :recipe, :difficulties]) %>
+            </li>
+            <li><i class="fa fa-group"></i>
+              <%= @recipe.portion %>
+            </li>
+            <li><i class="fa fa-globe"></i> <%= @recipe.cuisine.name %></li>
+            <li><i class="fa fa-cutlery"></i> <%= @recipe.meal.name%></li>
+            <li><i class="fa fa-star"></i> <%= @recipe.favorited_by.size %></li>
+          </ul>
+          <div class="text-center">
+            <span ><%= render partial: 'recipes/recipe_control', locals:{recipe: @recipe} %></span>
+            <div>
+              <%= form_tag share_recipe_path, method: :post, class:"navbar-form navbar-left" do %>
+              <div class="form-group">
+                <%= text_field_tag(:share_recipe_email, nil, placeholder:'Email', class:"form-control") %>
+                <%= submit_tag(t(:share_recipe_email), name: nil, class:"btn btn-primary") %>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="recipe-item">
+            <h5><%=t(:ingredients, scope: [:activerecord, :attributes, :recipe])%> :-</h5>
+            <ul class="list-unstyled">
+              <% @recipe.ingredients_items.each do |item, quantity| %>
+              <li>
+                <%= fa_icon("check", class: "fa-1x") %> <%= item %> <span class="pull-right"> <%= quantity %></span>
+                <div class="clearfix"></div>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-5 col-sm-12">
+          <!-- Recipe Items -->
+          <div class="recipe-item">
+            <!-- Heading -->
+            <h5>Modo de Preparo (<%= @recipe.preparation_time %>min):-</h5>
+            <!-- Recipe Description -->
+            <div class="recipe-description">
+              <!-- Paragraph -->
+              <p><%= simple_format(@recipe.instructions) %></p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>
-</div>
-<% end %>
-
-
-

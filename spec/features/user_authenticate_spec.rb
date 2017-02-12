@@ -16,7 +16,21 @@ feature 'User authenticates' do
     expect(page).to have_content "Bem-vindo #{user.name}"
   end
 
-  scenario 'welcome message only in user\'s profile' do
+  scenario 'with wrong user/password' do
+    user = create(:user)
+
+    visit root_path
+
+    click_on 'Entrar'
+
+    fill_in 'Usuário', with: user.email
+    fill_in 'Senha', with: 'wrong_password'
+    click_button 'Entrar'
+
+    expect(page).to have_content 'Usuário ou senha inválido'
+  end
+
+  scenario 'and welcome message shows only in user\'s profile' do
     user = create(:user)
     another_user = create(:user,
                           name: 'Joanne Doette',
@@ -36,7 +50,7 @@ feature 'User authenticates' do
     expect(page).to have_content another_user.name
   end
 
-  scenario 'and no message if not logged in' do
+  scenario 'and no welcome message if not logged in' do
     user = create(:user)
 
     visit user_path(user)

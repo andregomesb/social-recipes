@@ -1,6 +1,13 @@
-<%= form_tag search_recipes_path, method: :get, class:"navbar-form navbar-left" do %>
-  <div class="form-group">
+<div class=" header-search">
+  <%= form_tag search_recipes_path, method: :get, class:"navbar-form navbar-left" do %>
+  <div class="input-group">
     <%= text_field_tag(:search, nil, placeholder:t(:search), class:"form-control") %>
-    <%= submit_tag(t(:search), name: nil, class:"btn btn-default") %>
+    <span class="input-group-btn">
+      <%= button_tag( class: "btn btn-default", id: "search-button") do %>
+        <i class="fa fa-search"></i>
+      <% end %>
+    </span>
   </div>
-<% end %>
+  <% end %>
+</div>
+

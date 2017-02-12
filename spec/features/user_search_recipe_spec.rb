@@ -7,7 +7,7 @@ feature 'User searches for a recipe' do
     visit root_path
 
     fill_in 'Procurar', with: recipe.name
-    click_on 'Procurar'
+    page.find('#search-button').click
 
     expect(page).to have_content '1 resultado encontrado'
     expect(page).to have_content recipe.name
@@ -26,7 +26,7 @@ feature 'User searches for a recipe' do
     visit root_path
 
     fill_in 'Procurar', with: search_term
-    click_on 'Procurar'
+    page.find('#search-button').click
 
     expect(page).to have_content '2 resultados encontrados'
     expect(page).to have_content recipe.name
@@ -40,7 +40,7 @@ feature 'User searches for a recipe' do
     visit root_path
 
     fill_in 'Procurar', with: search_term
-    click_on 'Procurar'
+    page.find('#search-button').click
 
     expect(page).to have_content 'Nenhum resultado encontrado'
     expect(page).not_to have_content recipe.name

@@ -7,7 +7,7 @@ pt-BR:
     select_meals_example: 'Ex: Café da manhã, Acompanhamento, Prato Principal...'
     select_difficulty: 'Seleciona a dificuldade'
   search: 'Procurar'
-  share_recipe_email: 'Compartilhar Receita'
+  share_recipe_email: 'Compartilhar'
   results:
     zero: 'Nenhum resultado encontrado'
     one: '%{count} resultado encontrado'

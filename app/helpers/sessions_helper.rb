@@ -25,7 +25,7 @@ module SessionsHelper
   end
 
   def admin?
-    current_user.admin
+    current_user && current_user.admin
   end
 
   def logged_as_admin

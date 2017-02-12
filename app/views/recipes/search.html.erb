@@ -1,8 +1,13 @@
-<h1>Pesquisa: <%= @search_recipe if @search_recipe%></h1>
-<div class="row">
-<% @recipes.each do |recipe| %>
-    <div class="col-md-6">
-      <%= render partial: 'recipes/recipe', locals: { recipe: recipe } %>
-    </div>
-<% end %>
+<div class="text-center">
+  <h1>Pesquisa: <%= @search_recipe if @search_recipe%></h1>
 </div>
+<div class="dishes padd">
+  <div class="container">
+    <div class="row">
+      <% @recipes.each do |recipe| %>
+        <%= render partial: 'recipes/recipe', locals: { recipe: recipe } %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

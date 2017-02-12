@@ -1,11 +1,11 @@
-<div class="row">
-
-<div class="row">
-<h1>Minhas Receitas</h1>
-<%= t("users.show.empty") if current_user.recipes.empty? %>
-<% current_user.recipes.each do |recipe| %>
-    <div class="col-md-6">
-      <%= render partial: 'recipes/recipe', locals: { recipe: recipe } %>
+<div class="dishes padd">
+  <div class="container">
+    <div class="row">
+      <h1>Minhas Receitas</h1>
+      <%= t("users.show.empty") if @user.recipes.empty? %>
+      <% @user.recipes.each do |recipe| %>
+      <%= render partial: 'recipes/recipe', locals: { recipe: recipe, crud_buttons: true } %>
+      <% end %>
     </div>
-<% end %>
+  </div>
 </div>

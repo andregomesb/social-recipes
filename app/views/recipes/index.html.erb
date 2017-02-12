@@ -1,28 +1,45 @@
-<div class="row">
-  <%= render 'aside' %>
-  <div class="col-md-5 col-sm-12 latest-recipes">
-    <h1>Últimas receitas</h1>
-
-    <% @recipes.each do |recipe| %>
-      <div class="row">
-        <div class="col-md-12">
-          <%= render partial: 'recipe', locals: { recipe: recipe } %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  <% if @favorites %>
-    <div class="col-md-4 col-sm-12">
-      <h1>Receitas favoritas</h1>
-      <% @favorites.each do |recipe| %>
-      <div class="row">
-        <div class="col-md-12">
-          <%= render partial: 'recipe', locals: { recipe: recipe } %>
-        </div>
-      </div>
-    <% end %>
+<!-- Dishes Start -->
+<div class="dishes padd">
+  <div class="container">
+    <!-- Default Heading -->
+    <div class="default-heading">
+      <!-- Crown image -->
+      <%= image_tag("crown.png", class: "img-responsive" )%>
+      <!-- Heading -->
+      <h2>Últimas Receitas</h2>
+      <!-- Paragraph -->
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <!-- Border -->
+      <div class="border"></div>
     </div>
-  <% end %>
+    <div class="row">
+      <% @recipes.each do |recipe| %>
+        <%= render partial: 'recipe', locals: { recipe: recipe } %>
+      <% end %>
+    </div>
+  </div>
 </div>
+<!-- Dishes End -->
 
+<!-- Dishes Start -->
+<div class="dishes padd">
+  <div class="container">
+    <!-- Default Heading -->
+    <div class="default-heading">
+      <!-- Crown image -->
+      <%= image_tag("crown.png", class: "img-responsive" )%>
+      <!-- Heading -->
+      <h2>Receitas Favoritas</h2>
+      <!-- Paragraph -->
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <!-- Border -->
+      <div class="border"></div>
+    </div>
 
+    <div class="row">
+      <% @favorites.each do |recipe| %>
+      <%= render partial: 'recipe', locals: { recipe: recipe } %>
+      <% end %>
+    </div>
+  </div>
+</div>

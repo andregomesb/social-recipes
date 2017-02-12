@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= t :app_title %></title>
-    <%= csrf_meta_tags %>
+<head>
+  <title><%= t :app_title %></title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <header id="header" class="">
-      <%= render 'navbar' %>
-      <% unless flash.empty? %>
-        <%= render 'notification' %>
-      <% end %>
-    </header>
+<body>
+  <header id="header" class="">
+    <%= render 'navbar' %>
+  </header>
+  <% unless flash.empty? %>
+  <%= render 'notification' %>
+  <% end %>
+  <div class="main-content">
+    <%= yield %>
+  </div>
 
-    <div class="container">
-      <%= yield %>
-    </div>
-
-    <%= render 'footer' %>
-  </body>
+  <%= render 'footer' %>
+</body>
 </html>
