@@ -26,12 +26,8 @@
           </span>
           <!-- Social media links -->
           <div class="social">
-            <%=link_to_if @user.facebook, "http://facebook.com/#{@user.facebook}", class:"facebook" do %>
-            <%= fa_icon("facebook-square", class: "fa-2x") %>
-            <% end %>
-            <%=link_to_if @user.twitter, "http://twitter.com/#{@user.twitter}", class:"twitter" do %>
-            <%= fa_icon("twitter", class: "fa-2x") %>
-            <% end %>
+            <%=link_to_if @user.facebook, fa_icon("facebook-square", class: "fa-2x"), "http://facebook.com/#{@user.facebook}", class:"facebook"%>
+            <%=link_to_if @user.twitter, fa_icon("twitter", class: "fa-2x"), "http://twitter.com/#{@user.twitter}", class:"twitter" %>
           </div>
         </div>
       </div>

@@ -46,8 +46,15 @@
             <ul class="list-unstyled">
               <% @recipe.ingredients_items.each do |item, quantity| %>
               <li>
-                <%= fa_icon("check", class: "fa-1x") %> <%= item %> <span class="pull-right"> <%= quantity %></span>
-                <div class="clearfix"></div>
+                <div class="row">
+                  <div class="col-md-8 col-sm-12">
+                  <%= fa_icon("check", class: "fa-1x") %> <%= item %>
+                  </div>
+                  <div class="col-md-4 col-sm-12">
+                    <span class="pull-right"> <%= quantity %></span>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
               </li>
               <% end %>
             </ul>

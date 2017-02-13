@@ -1,0 +1,14 @@
+version: '2'
+services:
+  web:
+    build: .
+    volumes:
+      - .:/var/www/social-recipes
+    ports:
+      - "80:80"
+      - "3000:3000"
+    command: 'rails s -b 0.0.0.0 -p 80'
+    links:
+      - db
+  db:
+    image: postgres
