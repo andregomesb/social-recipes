@@ -177,14 +177,14 @@ no forno preaquecido por alguns minutos para terminar o preparo.\r\n
 Deixe-o descansar por alguns minutos. Em seguida, sirva-o em pedaços.\r\n")
 
 # Favorites
-master.recipes << recipe1
-master.recipes << recipe2
-master.recipes << recipe3
+master.favorites << recipe1
+master.favorites << recipe2
+master.favorites << recipe3
 
-chef.recipes << recipe2
-chef.recipes << recipe3
+chef.favorites << recipe2
+chef.favorites << recipe3
 
-bob.recipes << recipe1
-bob.recipes << recipe2
+bob.favorites << recipe1
+bob.favorites << recipe2
 
-john.recipes << recipe2
+john.favorites << recipe2
